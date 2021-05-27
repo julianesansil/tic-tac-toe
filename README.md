@@ -1,67 +1,46 @@
-# Front-End test
+# Getting Started with Create React App
 
-Test package based on a repo
-Repo contains some assets, like a font to be imported and some game assets (SVGs). Wireframes are also included to guide the candidate.
-Repo should be forked and returned as a repo link.
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Candidate notes:
-We want you to implement a standard web page, regarding the above Layout Specification section and the wireframes provided on the "Design Specs" folder. We also provide you an assets folder, where you can find all you need to accomplish the layout execution, including a font and some images. As you should have noticed, there is also a "Color palette" file on the Design specs folder for saving your time. However, feel free to edit the layout and decorate it as you want. Animations are welcome too. The only requirements for the included assets pack are the usage of the custom font and the gaming assets you may need.
-Also, you're free to add as many tools as you need to the project, such as Grunt, Gulp, Webpack, or npm/yarn dependencies.
-In case of adding some task runner or specific tools, please include the documentation you find significant.  If you simply want to write in ES6, it's ok to ignore the transpiler. We can live with that for this test.
-Usage of frameworks like Angular, React or VueJS are also up to you. Ok, now this is a joke. You will not need this stuff at all for now.
-Do not forget we all have phones and may want to play your awesome game during coffee time. 
+## Available Scripts
 
+In the project directory, you can run:
 
-## Layout Specifications
+### `yarn start`
 
-\**Except Header and Footer, all sections should be full screen.*
+Runs the app in the development mode.\
+Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-### Section 1
-- Top header featuring SWORD logo.
-- Should be fixed during site navigation
-- Background should become transparent after 150 pixels
-___
-### Section 2
-- Follow the design specification included on the repository to build your profile;
-___
-### Section 3
-- Follow provided wireframes to implement a Tic-tac-toe game.
- 
- **Basic section requirements:**
-- Game board;
-- Player Wins;
-- Number of games played;
-- Tic-tac-toe regular rules (First player to win 5 games wins);
-- When one of the players reaches the needed amount of wins, page gives congrats and scrolls to next section;
+The page will reload if you make edits.\
+You will also see any lint errors in the console.
 
-##### Basic Game Requirements (add more features if you want):
-- Detect victories;
-- Highlight victory line and tokens;
-- Count players wins;
-- Save wins history;
-- Time counter per game;
+### `yarn test`
 
-\**If you're feeling artistic today, do it. Enhance game aesthetics as you like.*
-___
-### Section 4
+Launches the test runner in the interactive watch mode.\
+See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-- Game final stats;
-- Percentage of wins for each player with feedback color on values (green, yellow, red);
-- History of game winners;
-- Aggregated play time;
-___
-### Section 5
-Footer with SWORD stuff and buttons to subscribe SWORD Games newsletter;
+### `yarn build`
 
-___
-## Bonus Features
-On Section 3, you can earn some extra respect points by either:
+Builds the app for production to the `build` folder.\
+It correctly bundles React in production mode and optimizes the build for the best performance.
 
-#### **Option 1:**
-##### Dynamic grid tic-tac-toe
-Select box to change game grid (3x3, 6x6, 9x9)
+The build is minified and the filenames include the hashes.\
+Your app is ready to be deployed!
 
-#### **Option 2:**
-##### 4-in-a-row game
-- Filter on top of game section (3) to toggle game with this being 4-in-a-row.
-- Both games should be functional and respect the requirements stated above.
+See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+
+### `yarn eject`
+
+**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+
+If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+
+Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+
+You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+
+## Learn More
+
+You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+
+To learn React, check out the [React documentation](https://reactjs.org/).
