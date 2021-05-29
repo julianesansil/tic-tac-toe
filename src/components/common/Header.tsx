@@ -24,7 +24,7 @@ const FlexContainer = styled(Container)`
   padding-bottom: 16px;
 `;
 
-const Header: React.FC = () => {
+const Header = (): React.ReactElement => {
   const [isTransparentBackground, setIsTransparentBackground] =
     useState<boolean>(false);
 

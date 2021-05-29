@@ -4,7 +4,7 @@ import Typography from 'components/common/Typography';
 import ProfilePhoto from 'assets/images/profile_photo.jpg';
 import { Avatar, Column1, Column2, FlexContainer } from './styles';
 
-const Profile: React.FC = () => {
+const Profile = (): React.ReactElement => {
   return (
     <section>
       <FlexContainer>

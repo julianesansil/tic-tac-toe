@@ -5,7 +5,7 @@ import defaultTheme from 'theme';
 import GlobalStyle from 'style';
 import Home from './Home';
 
-const App: React.FC = () => {
+const App = (): React.ReactElement => {
   return (
     <ThemeProvider theme={defaultTheme}>
       <GlobalStyle />

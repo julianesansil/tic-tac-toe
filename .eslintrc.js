@@ -23,6 +23,7 @@ module.exports = {
     'react-hooks/rules-of-hooks': 'error',
     'react-hooks/exhaustive-deps': 'off',
     'react/prop-types': 'off',
+    'react/require-default-props': 'off',
 
     'import/extensions': [
       'error',

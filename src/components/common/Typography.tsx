@@ -27,7 +27,7 @@ interface TypographyProps {
   margin?: { top?: string; bottom?: string; right?: string; left?: string };
 }
 
-const Typography: React.FC<TypographyProps> = props => {
+const Typography = (props: TypographyProps): React.ReactElement => {
   const theme = useContext(ThemeContext);
   const {
     children,
