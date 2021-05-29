@@ -11,13 +11,13 @@ export const FlexContainer = styled(Container)`
 
 export const Column1 = styled.div`
   display: flex;
-  flex: 0.5;
+  flex: 1;
   align-items: center;
   gap: 20px;
 `;
 
 export const Column2 = styled.div`
-  flex: 0.5;
+  flex: 1;
 `;
 
 export const Avatar = styled.img`

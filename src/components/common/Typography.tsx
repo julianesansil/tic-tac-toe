@@ -1,7 +1,20 @@
-import React, { useContext } from 'react';
+import React, { CSSProperties, useContext } from 'react';
 import { ThemeContext } from 'styled-components';
 
 import { ThemeColors, ThemeLineHeight } from 'theme/index';
+
+interface TypographyProps {
+  children: string;
+
+  variant?: keyof typeof VARIANT_MAPPING;
+  fontColor?: ThemeColors;
+  lineHeight?: ThemeLineHeight;
+
+  fontSize?: CSSProperties['fontSize'];
+  fontStyle?: CSSProperties['fontStyle'] | 'bold';
+  textAlign?: CSSProperties['textAlign'];
+  margin?: { top?: string; bottom?: string; right?: string; left?: string };
+}
 
 const VARIANT_MAPPING = {
   h1: 'h1',
@@ -16,26 +29,17 @@ const VARIANT_MAPPING = {
   body: 'p',
 };
 
-interface TypographyProps {
-  children: string;
-  variant?: keyof typeof VARIANT_MAPPING;
-  fontColor?: ThemeColors;
-  fontSize?: string;
-  fontStyle?: 'normal' | 'italic' | 'bold';
-  lineHeight?: ThemeLineHeight;
-  textAlign?: 'start' | 'center' | 'end' | 'justify';
-  margin?: { top?: string; bottom?: string; right?: string; left?: string };
-}
-
 const Typography = (props: TypographyProps): React.ReactElement => {
   const theme = useContext(ThemeContext);
   const {
     children,
+
     variant = 'body',
     fontColor = 'darkGrey',
-    fontSize,
-    fontStyle = 'normal',
     lineHeight = 'body',
+
+    fontSize,
+    fontStyle,
     textAlign,
     margin,
   } = props;
@@ -43,8 +47,10 @@ const Typography = (props: TypographyProps): React.ReactElement => {
   const style = {
     fontSize,
     textAlign,
+
     color: theme.colors[fontColor],
     lineHeight: theme.lineHeight[lineHeight],
+
     ...(fontStyle === 'bold' && { fontWeight: 'bold' }),
     ...(fontStyle === 'italic' && { fontStyle: 'italic' }),
     ...(margin && {

@@ -6,7 +6,7 @@ const GlobalStyle = createGlobalStyle`
   ${fonts}
   ${resetCSS}
 
-  body {
+  body, input {
     font-family: ${props => props.theme.fonts};
     font-size: 16px;
   }

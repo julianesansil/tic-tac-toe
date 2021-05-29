@@ -5,7 +5,7 @@ import SWORDLogo from 'assets/images/SWORD_Health_logo.svg';
 import Container from './Container';
 import Typography from './Typography';
 
-const FixedHeader = styled.header<{ isTransparentBackground: boolean }>`
+const FixedContainer = styled.div<{ isTransparentBackground: boolean }>`
   position: sticky;
   top: 0;
   left: 0;
@@ -43,12 +43,15 @@ const Header = (): React.ReactElement => {
   }, []);
 
   return (
-    <FixedHeader isTransparentBackground={isTransparentBackground}>
+    <FixedContainer
+      as="header"
+      isTransparentBackground={isTransparentBackground}
+    >
       <FlexContainer>
         <img src={SWORDLogo} alt="SWORD Health logo" height="46px" />
 
         <div>
-          <Typography variant="subtitle2" fontStyle="bold">
+          <Typography variant="subtitle1" fontStyle="bold">
             Frontend Developer
           </Typography>
 
@@ -57,7 +60,7 @@ const Header = (): React.ReactElement => {
           </Typography>
         </div>
       </FlexContainer>
-    </FixedHeader>
+    </FixedContainer>
   );
 };
 
