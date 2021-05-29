@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 
-import Boundary from './Boundary';
+import SWORDLogo from 'assets/images/SWORD_Health_logo.svg';
+import Container from './Container';
 import Typography from './Typography';
-import SWORDLogo from '../../assets/images/SWORD_Health_logo.svg';
 
 const FixedHeader = styled.header<{ isTransparentBackground: boolean }>`
   position: sticky;
@@ -14,7 +14,7 @@ const FixedHeader = styled.header<{ isTransparentBackground: boolean }>`
     props.isTransparentBackground ? 'transparent' : props.theme.colors.grey};
 `;
 
-const Container = styled(Boundary)`
+const FlexContainer = styled(Container)`
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -42,7 +42,7 @@ const Header: React.FC = () => {
 
   return (
     <FixedHeader isTransparentBackground={isTransparentBackground}>
-      <Container>
+      <FlexContainer>
         <img src={SWORDLogo} alt="SWORD Health logo" height="46px" />
 
         <div>
@@ -54,7 +54,7 @@ const Header: React.FC = () => {
             Challenge
           </Typography>
         </div>
-      </Container>
+      </FlexContainer>
     </FixedHeader>
   );
 };

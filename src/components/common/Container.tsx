@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-const Boundary = styled.div`
+const Container = styled.div`
   padding-left: 5%;
   padding-right: 5%;
 
@@ -15,4 +15,4 @@ const Boundary = styled.div`
   }
 `;
 
-export default Boundary;
+export default Container;

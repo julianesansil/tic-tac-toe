@@ -1,13 +1,13 @@
 import React from 'react';
 
-import Typography from '../../common/Typography';
-import { Avatar, Column1, Column2, Container } from './styles';
-import ProfilePhoto from '../../../assets/images/profile_photo.jpg';
+import Typography from 'components/common/Typography';
+import ProfilePhoto from 'assets/images/profile_photo.jpg';
+import { Avatar, Column1, Column2, FlexContainer } from './styles';
 
 const Profile: React.FC = () => {
   return (
     <section>
-      <Container>
+      <FlexContainer>
         <Column1>
           <Avatar src={ProfilePhoto} alt="Juliane's profile" />
 
@@ -62,7 +62,7 @@ const Profile: React.FC = () => {
             hope to help people through my work.
           </Typography>
         </Column2>
-      </Container>
+      </FlexContainer>
     </section>
   );
 };

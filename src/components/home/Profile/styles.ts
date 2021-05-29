@@ -1,7 +1,7 @@
 import styled from 'styled-components';
-import Boundary from '../../common/Boundary';
+import Container from 'components/common/Container';
 
-export const Container = styled(Boundary)`
+export const FlexContainer = styled(Container)`
   display: flex;
   align-items: center;
   justify-content: space-between;

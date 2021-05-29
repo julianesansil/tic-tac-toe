@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import { ThemeContext } from 'styled-components';
 
-import { ThemeColors, ThemeLineHeight } from '../../theme/index';
+import { ThemeColors, ThemeLineHeight } from 'theme/index';
 
 const VARIANT_MAPPING = {
   h1: 'h1',
