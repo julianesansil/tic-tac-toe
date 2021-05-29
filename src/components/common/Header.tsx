@@ -10,8 +10,10 @@ const FixedHeader = styled.header<{ isTransparentBackground: boolean }>`
   top: 0;
   left: 0;
   width: 100%;
-  background-color: ${props =>
-    props.isTransparentBackground ? 'transparent' : props.theme.colors.grey};
+
+  background-color: ${props => props.theme.colors.grey};
+  opacity: ${props => props.isTransparentBackground && 0.6};
+  transition: opacity 0.5s ease;
 `;
 
 const FlexContainer = styled(Container)`
