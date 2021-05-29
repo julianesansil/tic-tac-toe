@@ -12,5 +12,6 @@ const defaultTheme = {
 };
 
 export type ThemeType = typeof defaultTheme;
+export type ThemeColors = keyof typeof defaultTheme.colors;
 
 export default defaultTheme;

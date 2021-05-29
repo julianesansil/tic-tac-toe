@@ -9,7 +9,6 @@ const GlobalStyle = createGlobalStyle`
   body {
     font-family: ${props => props.theme.fonts};
     font-size: 16px;
-    line-height: 1.5;
   }
 
   #root {
