@@ -9,9 +9,14 @@ const defaultTheme = {
     darkGrey: '#2C2E30',
   },
   fonts: 'GlacialIndifference, sans-serif',
+  lineHeight: {
+    body: 1,
+    spaced: 1.5,
+  },
 };
 
 export type ThemeType = typeof defaultTheme;
 export type ThemeColors = keyof typeof defaultTheme.colors;
+export type ThemeLineHeight = keyof typeof defaultTheme.lineHeight;
 
 export default defaultTheme;

@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import { ThemeContext } from 'styled-components';
 
-import { ThemeColors } from '../../theme/index';
+import { ThemeColors, ThemeLineHeight } from '../../theme/index';
 
 const VARIANT_MAPPING = {
   h1: 'h1',
@@ -20,8 +20,10 @@ interface TypographyProps {
   children: string;
   variant?: keyof typeof VARIANT_MAPPING;
   fontColor?: ThemeColors;
+  fontSize?: string;
   fontStyle?: 'normal' | 'italic' | 'bold';
-
+  lineHeight?: ThemeLineHeight;
+  textAlign?: 'start' | 'center' | 'end' | 'justify';
   margin?: { top?: string; bottom?: string; right?: string; left?: string };
 }
 
@@ -31,12 +33,18 @@ const Typography: React.FC<TypographyProps> = props => {
     children,
     variant = 'body',
     fontColor = 'darkGrey',
+    fontSize,
     fontStyle = 'normal',
+    lineHeight = 'body',
+    textAlign,
     margin,
   } = props;
 
   const style = {
+    fontSize,
+    textAlign,
     color: theme.colors[fontColor],
+    lineHeight: theme.lineHeight[lineHeight],
     ...(fontStyle === 'bold' && { fontWeight: 'bold' }),
     ...(fontStyle === 'italic' && { fontStyle: 'italic' }),
     ...(margin && {
