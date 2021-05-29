@@ -12,12 +12,24 @@ export const FlexContainer = styled(Container)`
 export const Column1 = styled.div`
   display: flex;
   flex: 1;
+  flex-direction: column;
   align-items: center;
   gap: 20px;
+  text-align: center;
+
+  @media (min-width: 768px) {
+    flex-direction: row;
+    text-align: start;
+  }
 `;
 
 export const Column2 = styled.div`
   flex: 1;
+  display: none;
+
+  @media (min-width: 768px) {
+    display: block;
+  }
 `;
 
 export const Avatar = styled.img`

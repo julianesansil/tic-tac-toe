@@ -14,8 +14,13 @@ export const FixedContainer = styled.div<{ isTransparentBackground: boolean }>`
 
 export const FlexContainer = styled(Container)`
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: space-between;
   padding-top: 16px;
   padding-bottom: 16px;
+
+  @media (min-width: 340px) {
+    flex-direction: row;
+  }
 `;

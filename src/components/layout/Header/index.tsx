@@ -31,11 +31,16 @@ const Header = (): React.ReactElement => {
         <img src={SWORDLogo} alt="SWORD Health logo" height="46px" />
 
         <div>
-          <Typography variant="subtitle1" fontStyle="bold">
+          <Typography variant="subtitle1" fontStyle="bold" textAlign="end">
             Frontend Developer
           </Typography>
 
-          <Typography variant="body" fontStyle="italic" margin={{ top: '4px' }}>
+          <Typography
+            variant="body"
+            fontStyle="italic"
+            textAlign="end"
+            margin={{ top: '4px' }}
+          >
             Challenge
           </Typography>
         </div>

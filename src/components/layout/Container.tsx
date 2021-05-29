@@ -4,12 +4,12 @@ const Container = styled.div`
   padding-left: 5%;
   padding-right: 5%;
 
-  @media (min-width: 1066px) {
-    padding-left: calc((100% - 960px) / 2);
-    padding-right: calc((100% - 960px) / 2);
+  @media (min-width: 1200px) {
+    padding-left: calc((100% - 992px) / 2);
+    padding-right: calc((100% - 992px) / 2);
   }
 
-  @media (min-width: 1440px) {
+  @media (min-width: 1400px) {
     padding-left: calc((100% - 1200px) / 2);
     padding-right: calc((100% - 1200px) / 2);
   }
