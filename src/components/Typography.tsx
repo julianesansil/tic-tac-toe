@@ -37,8 +37,8 @@ const Typography: React.FC<TypographyProps> = props => {
 
   const style = {
     color: theme.colors[fontColor],
-    ...(fontStyle === 'bold' && { 'font-weight': 'bold' }),
-    ...(fontStyle === 'italic' && { 'font-style': 'italic' }),
+    ...(fontStyle === 'bold' && { fontWeight: 'bold' }),
+    ...(fontStyle === 'italic' && { fontStyle: 'italic' }),
     ...(margin && {
       margin: `${margin.top || 0} ${margin.right || 0} ${margin.bottom || 0} ${
         margin.left || 0
