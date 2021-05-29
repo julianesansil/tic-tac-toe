@@ -1,7 +1,7 @@
 import React from 'react';
+import Header from 'components/layout/Header';
+import Footer from 'components/layout/Footer';
 import Profile from 'components/home/Profile';
-import Header from 'components/common/Header';
-import Footer from 'components/common/Footer';
 
 const Home = (): React.ReactElement => {
   return (

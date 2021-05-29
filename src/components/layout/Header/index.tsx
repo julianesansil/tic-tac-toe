@@ -1,28 +1,8 @@
 import React, { useEffect, useState } from 'react';
-import styled from 'styled-components';
 
 import SWORDLogo from 'assets/images/SWORD_Health_logo.svg';
-import Container from './Container';
-import Typography from './Typography';
-
-const FixedContainer = styled.div<{ isTransparentBackground: boolean }>`
-  position: sticky;
-  top: 0;
-  left: 0;
-  width: 100%;
-
-  background-color: ${props => props.theme.colors.grey};
-  opacity: ${props => props.isTransparentBackground && 0.6};
-  transition: opacity 0.5s ease;
-`;
-
-const FlexContainer = styled(Container)`
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding-top: 16px;
-  padding-bottom: 16px;
-`;
+import Typography from 'components/common/Typography';
+import { FixedContainer, FlexContainer } from './styles';
 
 const Header = (): React.ReactElement => {
   const [isTransparentBackground, setIsTransparentBackground] =

@@ -1,49 +1,19 @@
 import React, { FormEvent, useState } from 'react';
-import styled from 'styled-components';
 
 import FacebookLogo from 'assets/images/facebook.svg';
 import InstagramLogo from 'assets/images/instagram.svg';
 import TwitterLogo from 'assets/images/twitter.svg';
 import SendIcon from 'assets/images/send.svg';
 
-import Container from './Container';
-import Typography from './Typography';
-import InputGroupButton from './InputGroupButton';
-
-const FlexContainer = styled(Container)`
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding-top: 50px;
-  padding-bottom: 50px;
-  background-color: ${props => props.theme.colors.lighGrey};
-`;
-
-const Section = styled.section`
-  flex: 1;
-  align-items: center;
-  justify-content: center;
-`;
-
-const Center = styled.div`
-  width: fit-content;
-  margin-right: auto;
-  margin-left: auto;
-`;
-
-const SocialMedia = styled.div`
-  display: flex;
-  gap: 8px;
-  margin-bottom: 8px;
-`;
-
-const Title = styled(Typography).attrs(() => ({
-  variant: 'subtitle1',
-}))``;
-
-const Text = styled(Typography).attrs(() => ({
-  fontSize: '12px',
-}))``;
+import InputGroupButton from 'components/common/InputGroupButton';
+import {
+  Center,
+  FlexContainer,
+  Section,
+  SocialMedia,
+  Text,
+  Title,
+} from './styles';
 
 const Footer = (): React.ReactElement => {
   const [emailToSubscribe, setEmailToSubscribe] = useState<string>();
