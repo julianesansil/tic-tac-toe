@@ -62,7 +62,7 @@ const GameSection = (): React.ReactElement => {
           <PlayerScoreValue>1</PlayerScoreValue>
         </div>
 
-        <TicTacToe />
+        <TicTacToe gridSize={GAME_INFO[selectedGame].gridSize} />
 
         <div>
           <PlayerLabel>Player 2</PlayerLabel>

@@ -1,36 +1,47 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
+import styled from 'styled-components';
 
 import ValueOption from './types';
 import Square from './Square';
 
-const TicTacToe = (): React.ReactElement => {
-  const gridSize = 3;
+interface TicTacToeProps {
+  gridSize: number;
+}
 
-  const [grid, setGrid] = useState<ValueOption[][]>(
-    new Array(gridSize).fill(new Array(gridSize).fill(undefined)),
-  );
+export const Grid = styled.div<TicTacToeProps>`
+  display: grid;
+  grid-template-columns: repeat(${props => props.gridSize}, 50px);
+`;
+
+const TicTacToe = (props: TicTacToeProps): React.ReactElement => {
+  const { gridSize } = props;
+
+  const [grid, setGrid] = useState<ValueOption[][]>([]);
   const [currentValue, setCurrentValue] = useState<ValueOption>(ValueOption.X);
 
-  const hasWinner = (linePosition: number, columnPosition: number) => {
-    let checkLines = 0;
+  useEffect(() => {
+    setGrid(new Array(gridSize).fill(new Array(gridSize).fill(undefined)));
+  }, [gridSize]);
+
+  const hasWinner = (rowPosition: number, columnPosition: number) => {
+    const square = grid[rowPosition][columnPosition];
+    let checkRows = 0;
     let checkColumns = 0;
     let checkDiagonal = 0;
 
     for (let i = 0; i < gridSize; i += 1) {
-      const square = grid[linePosition][columnPosition];
-
-      checkLines += grid[linePosition][i] === square ? 1 : 0;
+      checkRows += grid[rowPosition][i] === square ? 1 : 0;
       checkColumns += grid[i][columnPosition] === square ? 1 : 0;
 
-      if (linePosition === columnPosition) {
+      if (rowPosition === columnPosition) {
         checkDiagonal += grid[i][i] === square ? 1 : 0;
       }
-      if (linePosition + columnPosition === gridSize - 1) {
+      if (rowPosition + columnPosition === gridSize - 1) {
         checkDiagonal += grid[i][gridSize - i - 1] === square ? 1 : 0;
       }
 
       if (
-        checkLines === gridSize ||
+        checkRows === gridSize ||
         checkColumns === gridSize ||
         checkDiagonal === gridSize
       ) {
@@ -39,53 +50,40 @@ const TicTacToe = (): React.ReactElement => {
     }
 
     return (
-      checkLines === gridSize ||
+      checkRows === gridSize ||
       checkColumns === gridSize ||
       checkDiagonal === gridSize
     );
   };
 
-  const handleSquareClick = (linePosition: number, columnPosition: number) => {
-    if (!grid[linePosition][columnPosition]) {
-      // In short, grid[linePosition][columnPosition] = currentValue
-      const line = [...grid[linePosition]];
-      line[columnPosition] = currentValue;
-      grid[linePosition] = line;
+  const handleSquareClick = (rowPosition: number, columnPosition: number) => {
+    if (!grid[rowPosition][columnPosition]) {
+      // In short, grid[rowPosition][columnPosition] = currentValue
+      const row = [...grid[rowPosition]];
+      row[columnPosition] = currentValue;
+      grid[rowPosition] = row;
 
       setGrid(grid);
       setCurrentValue(
         currentValue === ValueOption.X ? ValueOption.O : ValueOption.X,
       );
 
-      console.log(hasWinner(linePosition, columnPosition));
+      console.log(hasWinner(rowPosition, columnPosition));
     }
   };
 
   return (
-    <div
-      style={{
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center',
-      }}
-    >
-      <div
-        style={{
-          display: 'grid',
-          gridTemplateColumns: `repeat(${gridSize}, 50px)`,
-        }}
-      >
-        {grid.map((line, linePosition) =>
-          line.map((square, columnPosition) => (
-            <Square
-              key={`${linePosition + columnPosition}`}
-              value={square}
-              onClick={() => handleSquareClick(linePosition, columnPosition)}
-            />
-          )),
-        )}
-      </div>
-    </div>
+    <Grid gridSize={gridSize}>
+      {grid.map((row, rowPosition) =>
+        row.map((square, columnPosition) => (
+          <Square
+            key={`${rowPosition + columnPosition}`}
+            value={square}
+            onClick={() => handleSquareClick(rowPosition, columnPosition)}
+          />
+        )),
+      )}
+    </Grid>
   );
 };
 

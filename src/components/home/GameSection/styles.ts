@@ -11,10 +11,12 @@ export const Container = styled(LayoutContainer)`
 `;
 
 export const PlayersArea = styled.div`
+  height: 450px;
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
   margin-top: 26px;
+  gap: 100px;
 `;
 
 export const Title = styled(Typography).attrs(() => ({
