@@ -6,15 +6,16 @@ import Square from './Square';
 
 interface TicTacToeProps {
   gridSize: number;
+  setIsPlaying: (isPlaying: boolean) => void;
 }
 
-export const Grid = styled.div<TicTacToeProps>`
+export const Grid = styled.div<{ size: number }>`
   display: grid;
-  grid-template-columns: repeat(${props => props.gridSize}, 50px);
+  grid-template-columns: repeat(${props => props.size}, 50px);
 `;
 
 const TicTacToe = (props: TicTacToeProps): React.ReactElement => {
-  const { gridSize } = props;
+  const { gridSize, setIsPlaying } = props;
 
   const [grid, setGrid] = useState<ValueOption[][]>([]);
   const [currentValue, setCurrentValue] = useState<ValueOption>(ValueOption.X);
@@ -57,6 +58,8 @@ const TicTacToe = (props: TicTacToeProps): React.ReactElement => {
   };
 
   const handleSquareClick = (rowPosition: number, columnPosition: number) => {
+    setIsPlaying(true);
+
     if (!grid[rowPosition][columnPosition]) {
       // In short, grid[rowPosition][columnPosition] = currentValue
       const row = [...grid[rowPosition]];
@@ -73,7 +76,7 @@ const TicTacToe = (props: TicTacToeProps): React.ReactElement => {
   };
 
   return (
-    <Grid gridSize={gridSize}>
+    <Grid size={gridSize}>
       {grid.map((row, rowPosition) =>
         row.map((square, columnPosition) => (
           <Square

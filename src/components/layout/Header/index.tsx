@@ -8,16 +8,16 @@ const Header = (): React.ReactElement => {
   const [isTransparentBackground, setIsTransparentBackground] =
     useState<boolean>(false);
 
-  const handleScroll = () => {
-    const { scrollY } = window;
-    if (scrollY > 150) {
-      setIsTransparentBackground(true);
-    } else {
-      setIsTransparentBackground(false);
-    }
-  };
-
   useEffect(() => {
+    const handleScroll = () => {
+      const { scrollY } = window;
+      if (scrollY > 150) {
+        setIsTransparentBackground(true);
+      } else {
+        setIsTransparentBackground(false);
+      }
+    };
+
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);

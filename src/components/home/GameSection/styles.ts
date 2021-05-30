@@ -10,13 +10,51 @@ export const Container = styled(LayoutContainer)`
   text-align: center;
 `;
 
+export const Block = styled.div<{ order: number }>`
+  @media (max-width: 800px) {
+    order: ${props => props.order};
+  }
+`;
+
 export const PlayersArea = styled.div`
-  height: 450px;
   display: flex;
+  flex-direction: column;
+  flex-flow: wrap;
   align-items: center;
   justify-content: center;
   margin-top: 26px;
-  gap: 100px;
+  gap: 50px;
+
+  @media (max-width: 800px) {
+    flex-direction: row;
+  }
+`;
+
+export const GameArea = styled(Block)`
+  height: 450px;
+  width: 450px;
+  border: solid 1px ${props => props.theme.colors.grey};
+
+  @media (max-width: 800px) {
+    width: 90%;
+  }
+`;
+
+export const TimerArea = styled(Block)`
+  flex-basis: 100%;
+
+  @media (max-width: 800px) {
+    flex-basis: 0;
+    min-width: 100px;
+  }
+`;
+
+export const Center = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  background-color: ${props => props.theme.colors.white};
 `;
 
 export const Title = styled(Typography).attrs(() => ({

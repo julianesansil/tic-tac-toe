@@ -2,10 +2,15 @@ import React, { useState } from 'react';
 
 import Typography from 'components/common/Typography';
 import Button from 'components/common/Button';
+import Timer from 'components/common/Timer';
 import TicTacToe from './TicTacToe';
 import {
   Container,
+  Block,
   PlayersArea,
+  GameArea,
+  TimerArea,
+  Center,
   Title,
   PlayerLabel,
   PlayerScoreValue,
@@ -29,6 +34,7 @@ type GameId = keyof typeof GAME_INFO;
 
 const GameSection = (): React.ReactElement => {
   const [selectedGame, setSelectedGame] = useState<GameId>(0);
+  const [isPlaying, setIsPlaying] = useState<boolean>(false);
 
   const renderGameTab = (gameId: GameId) => {
     const game = GAME_INFO[gameId];
@@ -57,17 +63,28 @@ const GameSection = (): React.ReactElement => {
       </div>
 
       <PlayersArea>
-        <div>
+        <Block order={2}>
           <PlayerLabel>Player 1</PlayerLabel>
           <PlayerScoreValue>1</PlayerScoreValue>
-        </div>
+        </Block>
 
-        <TicTacToe gridSize={GAME_INFO[selectedGame].gridSize} />
+        <GameArea order={1}>
+          <Center>
+            <TicTacToe
+              gridSize={GAME_INFO[selectedGame].gridSize}
+              setIsPlaying={setIsPlaying}
+            />
+          </Center>
+        </GameArea>
 
-        <div>
+        <Block order={4}>
           <PlayerLabel>Player 2</PlayerLabel>
           <PlayerScoreValue>2</PlayerScoreValue>
-        </div>
+        </Block>
+
+        <TimerArea order={3}>
+          <Timer isActive={isPlaying} variant="subtitle2" fontSize="18px" />
+        </TimerArea>
       </PlayersArea>
     </Container>
   );

@@ -3,8 +3,8 @@ import { ThemeContext } from 'styled-components';
 
 import { ThemeColors, ThemeLineHeight } from 'theme/index';
 
-interface TypographyProps {
-  children: string;
+export interface TypographyProps {
+  children: string | string[];
 
   variant?: keyof typeof VARIANT_MAPPING;
   fontColor?: ThemeColors;
