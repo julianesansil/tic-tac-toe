@@ -7,6 +7,7 @@ import ValueOption from './types';
 
 interface SquareProps {
   value: ValueOption;
+  disabled?: boolean;
   onClick: () => void;
 }
 
@@ -16,10 +17,10 @@ export const Container = styled.button`
 `;
 
 const Square = (props: SquareProps): React.ReactElement => {
-  const { value, onClick } = props;
+  const { value, disabled, onClick } = props;
 
   return (
-    <Container onClick={onClick}>
+    <Container disabled={disabled} onClick={onClick}>
       {value === ValueOption.X && <img src={XIcon} alt="X" />}
       {value === ValueOption.O && <img src={OIcon} alt="O" />}
     </Container>
