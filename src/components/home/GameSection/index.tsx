@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 
-import TimerHelper from 'helpers/timerHelper';
+import TimeHelper from 'helpers/timeHelper';
 import { useGameHistory } from 'contexts/GameHistoryContext';
 import Typography from 'components/common/Typography';
 import Button from 'components/common/Button';
@@ -12,6 +12,7 @@ import {
   GameArea,
   TimerArea,
   Center,
+  Playing,
   Title,
   PlayerLabel,
   PlayerScoreValue,
@@ -41,6 +42,9 @@ const GameSection = (): React.ReactElement => {
   const [isPlaying, setIsPlaying] = useState<boolean>(false);
   const [timer, setTimer] = useState<string>(initialTimer);
 
+  const [vCounter1, setVCounter1] = useState<number>(0);
+  const [vCounter2, setVCounter2] = useState<number>(0);
+
   const intervalRef = useRef<NodeJS.Timeout | null>(null);
   const counterRef = useRef<number>(0);
 
@@ -51,7 +55,7 @@ const GameSection = (): React.ReactElement => {
 
       intervalRef.current = setInterval(() => {
         counterRef.current += 1;
-        setTimer(TimerHelper.toHHMMSS(counterRef.current));
+        setTimer(TimeHelper.toHHMMSS(counterRef.current));
       }, 1000);
     } else {
       if (counterRef.current) {
@@ -69,12 +73,32 @@ const GameSection = (): React.ReactElement => {
     return () => clearInterval(intervalRef.current as NodeJS.Timeout);
   }, []);
 
+  useEffect(() => {
+    let victories1 = 0;
+    let victories2 = 0;
+    gameHistoryContext.victoriesHistory.forEach(winner => {
+      if (winner === 'P1') {
+        victories1 += 1;
+      }
+      if (winner === 'P2') {
+        victories2 += 1;
+      }
+    });
+    setVCounter1(victories1);
+    setVCounter2(victories2);
+
+    return () => clearInterval(intervalRef.current as NodeJS.Timeout);
+  }, [gameHistoryContext.victoriesHistory]);
+
   const renderGameTab = (gameId: GameId) => {
     const game = GAME_INFO[gameId];
     return (
       <Button
         selected={selectedGame === gameId}
-        onClick={() => setSelectedGame(gameId)}
+        onClick={() => {
+          setIsPlaying(false);
+          setSelectedGame(gameId);
+        }}
       >
         {selectedGame === gameId ? 'Tic Tac Toe' : 'TTT'} {game.name}
       </Button>
@@ -95,10 +119,22 @@ const GameSection = (): React.ReactElement => {
         {renderGameTab(2)}
       </div>
 
+      <Playing>
+        {isPlaying ? (
+          <Typography margin={{ top: '20px', bottom: '32px' }}>
+            Playing...
+          </Typography>
+        ) : (
+          <Button disabled={isPlaying} onClick={() => setIsPlaying(true)}>
+            START!
+          </Button>
+        )}
+      </Playing>
+
       <PlayersArea>
         <Block order={2}>
           <PlayerLabel>Player 1</PlayerLabel>
-          <PlayerScoreValue>1</PlayerScoreValue>
+          <PlayerScoreValue>{vCounter1}</PlayerScoreValue>
         </Block>
 
         <GameArea order={1}>
@@ -113,29 +149,11 @@ const GameSection = (): React.ReactElement => {
 
         <Block order={4}>
           <PlayerLabel>Player 2</PlayerLabel>
-          <PlayerScoreValue>2</PlayerScoreValue>
+          <PlayerScoreValue>{vCounter2}</PlayerScoreValue>
         </Block>
 
         <TimerArea order={3}>
-          {isPlaying ? (
-            <Typography margin={{ top: '12px', bottom: '16px' }}>
-              Playing...
-            </Typography>
-          ) : (
-            <Button
-              backgroundColor="grey"
-              disabled={isPlaying}
-              onClick={() => setIsPlaying(true)}
-            >
-              START!
-            </Button>
-          )}
-
-          <Typography
-            variant="subtitle2"
-            fontSize="18px"
-            margin={{ top: '12px' }}
-          >
+          <Typography variant="subtitle2" fontSize="22px">
             {timer}
           </Typography>
         </TimerArea>

@@ -27,6 +27,7 @@ const TicTacToe = (props: TicTacToeProps): React.ReactElement => {
 
   const clearGame = () => {
     counter.current = 0;
+    setCurrentValue(ValueOption.X);
     setGrid(new Array(gridSize).fill(new Array(gridSize).fill(undefined)));
   };
 

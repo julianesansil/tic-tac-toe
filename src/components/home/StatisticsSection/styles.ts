@@ -13,7 +13,7 @@ export const Flex = styled.div`
   display: flex;
   justify-content: center;
   gap: 6px;
-  margin-bottom: 40px;
+  margin-bottom: 30px;
 `;
 
 export const GameHistory = styled.div`
@@ -22,6 +22,18 @@ export const GameHistory = styled.div`
   align-items: center;
   justify-content: space-evenly;
   text-align: center;
+`;
+
+export const PlayersInfo = styled.div`
+  display: flex;
+  align-items: start;
+  justify-content: center;
+  gap: 24px;
+
+  & > div > div {
+    display: flex;
+    gap: 10px;
+  }
 `;
 
 export const Title = styled(Typography).attrs(() => ({
@@ -38,8 +50,29 @@ export const Subtitle = styled(Typography).attrs(() => ({
 }))``;
 
 export const PlayerLabel = styled(Typography).attrs(() => ({
-  fontSize: '22px',
+  fontSize: '18px',
+  margin: { bottom: '8px' },
 }))``;
+
+export const PlayerPercentage = styled(Typography).attrs(() => ({
+  fontColor: 'white',
+  fontStyle: 'bold',
+}))``;
+
+export const VL = styled(Typography).attrs(() => ({
+  fontSize: '12px',
+  margin: { top: '8px' },
+}))``;
+
+export const Bagde = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 40px;
+  width: 40px;
+  background-color: ${props => props.theme.colors.newGrey};
+  border-radius: 50%;
+`;
 
 export const CheckMark = styled.div<{ checked: boolean }>`
   height: 16px;

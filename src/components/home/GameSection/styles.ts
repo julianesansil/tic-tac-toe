@@ -57,6 +57,10 @@ export const Center = styled.div`
   background-color: ${props => props.theme.colors.white};
 `;
 
+export const Playing = styled.div`
+  margin-top: 10px;
+`;
+
 export const Title = styled(Typography).attrs(() => ({
   variant: 'title',
   fontSize: '24px',

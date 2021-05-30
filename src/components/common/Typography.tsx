@@ -4,7 +4,7 @@ import { ThemeContext } from 'styled-components';
 import { ThemeColors, ThemeLineHeight } from 'theme/index';
 
 export interface TypographyProps {
-  children: string;
+  children: any;
 
   variant?: keyof typeof VARIANT_MAPPING;
   fontColor?: ThemeColors;
