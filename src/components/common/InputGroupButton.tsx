@@ -1,12 +1,12 @@
-import React, { ButtonHTMLAttributes, InputHTMLAttributes } from 'react';
+import React, { InputHTMLAttributes } from 'react';
 import styled from 'styled-components';
 
 import Input from './Input';
-import Button from './Button';
+import Button, { ButtonProps } from './Button';
 
 interface InputGroupButtonProps {
   inputProps: InputHTMLAttributes<HTMLInputElement>;
-  buttonProps: ButtonHTMLAttributes<HTMLButtonElement>;
+  buttonProps: ButtonProps;
 }
 
 const FlexContainer = styled.div`
@@ -21,7 +21,7 @@ const InputGroupButton = (props: InputGroupButtonProps): React.ReactElement => {
   return (
     <FlexContainer>
       <Input {...inputProps} />
-      <Button {...buttonProps} />
+      <Button backgroundColor="grey" icon {...buttonProps} />
     </FlexContainer>
   );
 };

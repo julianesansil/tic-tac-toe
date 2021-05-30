@@ -69,7 +69,12 @@ const TicTacToe = (): React.ReactElement => {
         justifyContent: 'center',
       }}
     >
-      <div style={{ display: 'grid', gridTemplateColumns: '50px 50px 50px' }}>
+      <div
+        style={{
+          display: 'grid',
+          gridTemplateColumns: `repeat(${gridSize}, 50px)`,
+        }}
+      >
         {grid.map((line, linePosition) =>
           line.map((square, columnPosition) => (
             <Square

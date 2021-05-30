@@ -2,15 +2,15 @@ import React from 'react';
 
 import Header from 'components/layout/Header';
 import Footer from 'components/layout/Footer';
-import Profile from 'components/home/Profile';
-import TicTacToe from 'components/home/TicTacToe';
+import ProfileSection from 'components/home/ProfileSection';
+import GameSection from 'components/home/GameSection';
 
 const Home = (): React.ReactElement => {
   return (
     <>
       <Header />
-      <Profile />
-      <TicTacToe />
+      <ProfileSection />
+      <GameSection />
       <Footer />
     </>
   );

@@ -3,6 +3,7 @@ const defaultTheme = {
     blue: '#37A8EE',
     green: '#00DCA4',
     yellow: '#F1C40F',
+    white: '#FFFFFF',
 
     grey: '#D8D8D8',
     lighGrey: '#F6F8F9',

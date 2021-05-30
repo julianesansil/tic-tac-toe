@@ -4,7 +4,7 @@ import Typography from 'components/common/Typography';
 import ProfilePhoto from 'assets/images/profile_photo.jpg';
 import { Avatar, Column1, Column2, FlexContainer } from './styles';
 
-const Profile = (): React.ReactElement => {
+const ProfileSection = (): React.ReactElement => {
   return (
     <FlexContainer as="section">
       <Column1>
@@ -53,4 +53,4 @@ const Profile = (): React.ReactElement => {
   );
 };
 
-export default Profile;
+export default ProfileSection;
