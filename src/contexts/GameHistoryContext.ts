@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-empty-function */
 import { createContext, useContext } from 'react';
 
-export type PlayerOption = 'P1' | 'P2';
+export type PlayerOption = 'P1' | 'P2' | '-';
 
 export type GameHistoryContextProps = {
   victoriesHistory: PlayerOption[];

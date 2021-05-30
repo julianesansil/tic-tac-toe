@@ -8,6 +8,7 @@ const defaultTheme = {
     grey: '#D8D8D8',
     lighGrey: '#F6F8F9',
     darkGrey: '#2C2E30',
+    newGrey: '#808080',
   },
   fonts: 'GlacialIndifference, sans-serif',
   lineHeight: {

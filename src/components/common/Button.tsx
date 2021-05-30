@@ -13,7 +13,7 @@ const Button = styled.button<ButtonProps>`
     props.selected ? props.theme.colors.white : props.theme.colors.darkGrey};
   background-color: ${props =>
     props.theme.colors[
-      props.backgroundColor || (props.selected ? 'darkGrey' : 'white')
+      props.backgroundColor || (props.selected ? 'newGrey' : 'white')
     ]};
   border: none;
 

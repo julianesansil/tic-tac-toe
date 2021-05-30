@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import styled from 'styled-components';
 
-import { useGameHistory } from 'contexts/GameHistoryContext';
+import { PlayerOption, useGameHistory } from 'contexts/GameHistoryContext';
 import ValueOption from './types';
 import Square from './Square';
 
@@ -40,10 +40,17 @@ const TicTacToe = (props: TicTacToeProps): React.ReactElement => {
     }
   }, [newGame]);
 
-  const saveWinner = (value: ValueOption) => {
+  const saveWinner = (value: ValueOption | undefined) => {
+    let winner: PlayerOption = '-';
+    if (value === ValueOption.X) {
+      winner = 'P1';
+    } else if (value === ValueOption.O) {
+      winner = 'P2';
+    }
+
     gameHistoryContext.setVictoriesHistory([
       ...gameHistoryContext.victoriesHistory,
-      value === ValueOption.X ? 'P1' : 'P2',
+      winner,
     ]);
   };
 
@@ -83,6 +90,7 @@ const TicTacToe = (props: TicTacToeProps): React.ReactElement => {
 
     // Game tied
     if (counter.current === gridSize ** 2) {
+      saveWinner(undefined);
       setIsPlaying(false);
     }
   };
