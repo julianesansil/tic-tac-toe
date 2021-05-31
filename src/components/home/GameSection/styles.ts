@@ -38,10 +38,15 @@ export const PlayersArea = styled.div`
 export const GameArea = styled(Block)`
   height: 450px;
   width: 450px;
+  background-color: ${props => props.theme.colors.white};
   border: solid 1px ${props => props.theme.colors.grey};
 
   @media (max-width: 800px) {
     width: 90%;
+  }
+
+  @media (max-width: 576px) {
+    height: 300px;
   }
 `;
 
@@ -59,7 +64,10 @@ export const Center = styled.div`
   justify-content: center;
   align-items: center;
   height: 100%;
-  background-color: ${props => props.theme.colors.white};
+
+  @media (max-width: 576px) {
+    transform: scale(0.55);
+  }
 `;
 
 export const Playing = styled.div`
