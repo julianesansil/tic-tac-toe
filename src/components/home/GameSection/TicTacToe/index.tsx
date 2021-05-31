@@ -22,12 +22,19 @@ const TicTacToe = (props: TicTacToeProps): React.ReactElement => {
 
   const [grid, setGrid] = useState<ValueOption[][]>([]);
   const [currentValue, setCurrentValue] = useState<ValueOption>(ValueOption.X);
+  const [winningMove, setWinningMove] =
+    useState<{
+      rowPosition: number | undefined;
+      columnPosition: number | undefined;
+      direction: 'row' | 'column' | 'diagonal1' | 'diagonal2' | undefined;
+    }>();
 
   const counter = useRef<number>(0);
 
   const clearGame = () => {
     setGrid(new Array(gridSize).fill(new Array(gridSize).fill(undefined)));
     setCurrentValue(ValueOption.X);
+    setWinningMove(undefined);
     counter.current = 0;
   };
 
@@ -101,16 +108,25 @@ const TicTacToe = (props: TicTacToeProps): React.ReactElement => {
         checkDiagonal2 === gridSize
       ) {
         matchOver = true;
-        endMatch(square);
+
+        const direction =
+          (checkRows === gridSize && 'row') ||
+          (checkColumns === gridSize && 'column') ||
+          (checkDiagonal1 === gridSize && 'diagonal1') ||
+          (checkDiagonal2 === gridSize && 'diagonal2') ||
+          undefined;
+        setWinningMove({ direction, rowPosition, columnPosition });
+
         setIsPlaying(false);
+        endMatch(square);
         break;
       }
     }
 
     // Match tied
     if (!matchOver && counter.current === gridSize ** 2) {
-      endMatch(undefined);
       setIsPlaying(false);
+      endMatch(undefined);
     }
   };
 
@@ -132,14 +148,39 @@ const TicTacToe = (props: TicTacToeProps): React.ReactElement => {
     }
   };
 
+  const isSquareHighlighted = (rowPosition: number, columnPosition: number) => {
+    if (!winningMove) {
+      return false;
+    }
+    switch (winningMove?.direction) {
+      case 'row':
+        return rowPosition === winningMove.rowPosition;
+      case 'column':
+        return columnPosition === winningMove.columnPosition;
+      case 'diagonal1':
+        return rowPosition === columnPosition;
+      case 'diagonal2':
+        return (
+          rowPosition + columnPosition ===
+          (winningMove.rowPosition || 0) + (winningMove.columnPosition || 0)
+        );
+      default:
+        return false;
+    }
+  };
+
   return (
     <Grid size={gridSize}>
       {grid.map((row, rowPosition) =>
         row.map((square, columnPosition) => (
           <Square
-            disabled={!newGame}
             key={`${rowPosition + columnPosition}`}
             value={square}
+            isSquareHighlighted={isSquareHighlighted(
+              rowPosition,
+              columnPosition,
+            )}
+            disabled={!newGame}
             onClick={() => handleSquareClick(rowPosition, columnPosition)}
           />
         )),

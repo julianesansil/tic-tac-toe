@@ -12,7 +12,7 @@ Developed in [ReactJS](https://pt-br.reactjs.org/), based on [SWORD Health repos
   - [Checklist](#checklist)
     - [Requirements](#requirements)
     - [Bonus Requirements](#bonus-requirements)
-  - [Run](#run)
+  - [Run locally](#run-locally)
   - [Project dependencies](#project-dependencies)
 
 
@@ -23,12 +23,12 @@ Developed in [ReactJS](https://pt-br.reactjs.org/), based on [SWORD Health repos
 - [x] Header
   - [x] Fixed header during site navigation.
   - [x] Background transparent after 150 pixels.
-- [ ] Game section
+- [x] Game section
   - [x] Tic-tac-toe (first player to win 5 games wins as a rule).
   - [x] Wins detected, players wins counter and wins history saved.
   - [x] Time counter per game.
-  - [x] When one of the players reaches the needed amount of wins, page gives congrats and scrolls to next section.
-  - [ ] Highlight victory line and tokens.
+  - [x] Congrats when one of the players reaches the needed amount of wins.
+  - [x] Highlight victory line and tokens.
 - [x] Statistics section
   - [x] Percentage of wins for each player, with feedback color on values (green, yellow, red).
   - [x] History of game winners.

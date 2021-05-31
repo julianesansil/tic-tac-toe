@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from 'react';
 
+import { ThemeColors } from 'theme';
 import { MAX_MATCHES } from 'constants/game';
 import TimeHelper from 'helpers/timeHelper';
+
 import { PlayerOption, useGameHistory } from 'context/GameHistoryContext';
 import Typography from 'components/common/Typography';
 import {
@@ -43,11 +45,40 @@ const StatisticsSection = (): React.ReactElement => {
 
   const calculateVictoriesPercentage = (player: PlayerOption) => {
     if (matchsCounter) {
-      return Math.floor(
-        (gameHistoryContext.info.scoreBoard[player] / matchsCounter) * 100,
-      );
+      return (gameHistoryContext.info.scoreBoard[player] / matchsCounter) * 100;
     }
     return 0;
+  };
+
+  const renderPercentageBadge = (
+    player: PlayerOption,
+    isVictoryBadge?: boolean,
+  ) => {
+    const victoriesPercentage = calculateVictoriesPercentage(player);
+    let backgroundColor: ThemeColors = 'newGrey';
+
+    const oneThird = 100 / 3;
+    if (matchsCounter > 0 && isVictoryBadge) {
+      if (victoriesPercentage <= oneThird) {
+        backgroundColor = 'red';
+      } else if (victoriesPercentage >= 2 * oneThird) {
+        backgroundColor = 'green';
+      } else {
+        backgroundColor = 'yellow';
+      }
+    }
+
+    return (
+      <>
+        <Bagde backgroundColor={backgroundColor}>
+          <PlayerPercentage>
+            {Math.floor(victoriesPercentage)}%
+          </PlayerPercentage>
+        </Bagde>
+        {isVictoryBadge === true && <VL>V</VL>}
+        {isVictoryBadge === false && <VL>F</VL>}
+      </>
+    );
   };
 
   return (
@@ -66,56 +97,22 @@ const StatisticsSection = (): React.ReactElement => {
             <div>
               <PlayerLabel>Player 1</PlayerLabel>
               <div>
-                <div>
-                  <Bagde backgroundColor="green">
-                    <PlayerPercentage>
-                      {calculateVictoriesPercentage('P1')}%
-                    </PlayerPercentage>
-                  </Bagde>
-                  <VL>V</VL>
-                </div>
-
-                <div>
-                  <Bagde backgroundColor="red">
-                    <PlayerPercentage>
-                      {calculateVictoriesPercentage('P2')}%
-                    </PlayerPercentage>
-                  </Bagde>
-                  <VL>L</VL>
-                </div>
+                <div>{renderPercentageBadge('P1', true)}</div>
+                <div>{renderPercentageBadge('P2', false)}</div>
               </div>
             </div>
 
             <div>
               <PlayerLabel>Player 2</PlayerLabel>
               <div>
-                <div>
-                  <Bagde backgroundColor="green">
-                    <PlayerPercentage>
-                      {calculateVictoriesPercentage('P2')}%
-                    </PlayerPercentage>
-                  </Bagde>
-                  <VL>V</VL>
-                </div>
-
-                <div>
-                  <Bagde backgroundColor="red">
-                    <PlayerPercentage>
-                      {calculateVictoriesPercentage('P1')}%
-                    </PlayerPercentage>
-                  </Bagde>
-                  <VL>L</VL>
-                </div>
+                <div>{renderPercentageBadge('P2', true)}</div>
+                <div>{renderPercentageBadge('P1', false)}</div>
               </div>
             </div>
 
             <div>
               <PlayerLabel>Ties</PlayerLabel>
-              <Bagde backgroundColor="yellow">
-                <PlayerPercentage>
-                  {calculateVictoriesPercentage('tie')}%
-                </PlayerPercentage>
-              </Bagde>
+              <div>{renderPercentageBadge('tie')}</div>
             </div>
           </PlayersInfo>
         </div>

@@ -1,10 +1,9 @@
 import React, { CSSProperties, useContext } from 'react';
 import { ThemeContext } from 'styled-components';
-
 import { ThemeColors, ThemeLineHeight } from 'theme/index';
 
 export interface TypographyProps {
-  children: any;
+  children: React.ReactNode;
 
   variant?: keyof typeof VARIANT_MAPPING;
   fontColor?: ThemeColors;
