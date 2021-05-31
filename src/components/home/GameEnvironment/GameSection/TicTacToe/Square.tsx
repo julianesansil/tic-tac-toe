@@ -19,7 +19,7 @@ export const Container = styled.button<{ isSquareHighlighted?: boolean }>`
   height: 50px;
 
   background-color: ${props =>
-    props.isSquareHighlighted ? props.theme.colors.darkGrey : undefined};
+    props.isSquareHighlighted ? props.theme.colors.newGrey : undefined};
 `;
 
 const Square = (props: SquareProps): React.ReactElement => {

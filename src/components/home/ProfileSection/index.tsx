@@ -25,6 +25,16 @@ const ProfileSection = (): React.ReactElement => {
           <Typography lineHeight="spaced">
             Ocupation: Frontend Developer
           </Typography>
+          <Typography lineHeight="spaced">
+            LinkedIn:{' '}
+            <a
+              href="https://www.linkedin.com/in/jlsansil/"
+              target="_blank"
+              rel="noreferrer"
+            >
+              @jlsansil
+            </a>
+          </Typography>
         </div>
       </Column1>
 

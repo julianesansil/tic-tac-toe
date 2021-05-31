@@ -24,22 +24,23 @@ Developed in [ReactJS](https://pt-br.reactjs.org/), based on [SWORD Health repos
   - [x] Fixed header during site navigation.
   - [x] Background transparent after 150 pixels.
 - [x] Game section
-  - [x] Tic-tac-toe (first player to win 5 games wins as a rule).
-  - [x] Wins detected, players wins counter and wins history saved.
-  - [x] Time counter per game.
-  - [x] Congrats when one of the players reaches the needed amount of wins.
+  - [x] Regular Tic Tac Toe.
+  - [x] Time counter per match.
   - [x] Highlight victory line and tokens.
+  - [x] First player to win 5 matchs wins the game.
+  - [x] Congrats when one of the players reaches the needed amount to win the game.
+  - [x] Wins detected, players wins counter and wins history saved.
 - [x] Statistics section
-  - [x] Percentage of wins for each player, with feedback color on values (green, yellow, red).
-  - [x] History of game winners.
   - [x] Aggregated play time.
+  - [x] History of game winners.
+  - [x] Percentage of wins for each player, with feedback color on values (green, yellow, red).
 - [x] Profile section
 - [x] Footer
 
 
 ### Bonus requirements
 
-- [x] Dynamic grid tic-tac-toe
+- [x] Dynamic Tic Tac Toe grid
   - [x] Different game grid sizes: 3x3, 6x6, 9x9.
 
 

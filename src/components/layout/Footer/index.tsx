@@ -55,15 +55,27 @@ const Footer = (): React.ReactElement => {
           <Title margin={{ bottom: '12px' }}>Stay in touch</Title>
 
           <SocialMedia>
-            <a href="https://www.facebook.com/SWORDHealth1">
+            <a
+              href="https://www.facebook.com/SWORDHealth1"
+              target="_blank"
+              rel="noreferrer"
+            >
               <img src={FacebookLogo} alt="Facebook logo" height="20px" />
             </a>
 
-            <a href="https://twitter.com/swordhealth">
+            <a
+              href="https://twitter.com/swordhealth"
+              target="_blank"
+              rel="noreferrer"
+            >
               <img src={TwitterLogo} alt="Twitter logo" height="20px" />
             </a>
 
-            <a href="https://www.instagram.com/sword_health">
+            <a
+              href="https://www.instagram.com/sword_health"
+              target="_blank"
+              rel="noreferrer"
+            >
               <img src={InstagramLogo} alt="Instagram logo" height="20px" />
             </a>
           </SocialMedia>

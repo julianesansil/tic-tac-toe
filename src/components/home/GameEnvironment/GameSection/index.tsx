@@ -115,11 +115,15 @@ const GameSection = (props: GameSectionProps): React.ReactElement => {
 
       <Playing>
         {isPlaying ? (
-          <Typography margin={{ top: '20px', bottom: '32px' }}>
-            Playing...
+          <Typography fontColor="red" margin={{ top: '20px', bottom: '32px' }}>
+            PLAYING...
           </Typography>
         ) : (
-          <Button disabled={isPlaying} onClick={startMatch}>
+          <Button
+            backgroundColor="green"
+            disabled={isPlaying}
+            onClick={startMatch}
+          >
             START!
           </Button>
         )}

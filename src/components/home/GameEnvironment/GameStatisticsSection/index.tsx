@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 
 import { ThemeColors } from 'theme';
-import { MAX_MATCHES } from 'constants/game';
+import { MAX_MATCHS } from 'constants/game';
 import TimeHelper from 'helpers/timeHelper';
 
 import { PlayerOption, useGameHistory } from 'context/GameHistoryContext';
@@ -21,15 +21,16 @@ import {
   Square,
 } from './styles';
 
-const StatisticsSection = (): React.ReactElement => {
+const GameStatisticsSection = React.forwardRef<HTMLElement>((props, ref) => {
+  // const GameStatisticsSection = (): React.ReactElement => {
   const gameHistoryContext = useGameHistory();
   const matchsCounter = gameHistoryContext.info.winnersPerMatch.length;
 
   const [playedMatchs, setPlayedMatchs] = useState<boolean[]>(
-    new Array(MAX_MATCHES).fill(false),
+    new Array(MAX_MATCHS).fill(false),
   );
   const [winners, setWinners] = useState<string[]>(
-    new Array(MAX_MATCHES).fill(undefined),
+    new Array(MAX_MATCHS).fill(undefined),
   );
 
   useEffect(() => {
@@ -82,7 +83,7 @@ const StatisticsSection = (): React.ReactElement => {
   };
 
   return (
-    <Container as="section" id="statistics-section">
+    <Container as="section" ref={ref}>
       <Title>Awesome Statistics</Title>
 
       <Typography margin={{ top: '14px', bottom: '60px' }}>
@@ -148,6 +149,7 @@ const StatisticsSection = (): React.ReactElement => {
       </div>
     </Container>
   );
-};
+  // };
+});
 
-export default StatisticsSection;
+export default GameStatisticsSection;
