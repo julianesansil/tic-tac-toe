@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 
 import TimeHelper from 'helpers/timeHelper';
-import { useGameHistory } from 'contexts/GameHistoryContext';
+import { useGameHistory } from 'context/GameHistoryContext';
 import Typography from 'components/common/Typography';
 import Button from 'components/common/Button';
 import TicTacToe from './TicTacToe';

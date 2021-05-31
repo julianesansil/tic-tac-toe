@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 
 import { MAX_MATCHES, MAX_VICTORIES } from 'constants/game';
-import { GameHistoryContext, GameInfo } from 'contexts/GameHistoryContext';
+import { GameHistoryContext, GameInfo } from 'context/GameHistoryContext';
 
 import Header from 'components/layout/Header';
 import Footer from 'components/layout/Footer';

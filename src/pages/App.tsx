@@ -2,7 +2,7 @@ import React from 'react';
 import { ThemeProvider } from 'styled-components';
 
 import defaultTheme from 'theme';
-import GlobalStyle from 'style';
+import GlobalStyle from 'styles';
 import Home from './Home';
 
 const App = (): React.ReactElement => {

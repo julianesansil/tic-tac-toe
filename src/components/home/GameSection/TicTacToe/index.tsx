@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import styled from 'styled-components';
 
-import { PlayerOption, useGameHistory } from 'contexts/GameHistoryContext';
+import { PlayerOption, useGameHistory } from 'context/GameHistoryContext';
 import ValueOption from './types';
 import Square from './Square';
 

@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 
 import { MAX_MATCHES } from 'constants/game';
 import TimeHelper from 'helpers/timeHelper';
-import { PlayerOption, useGameHistory } from 'contexts/GameHistoryContext';
+import { PlayerOption, useGameHistory } from 'context/GameHistoryContext';
 import Typography from 'components/common/Typography';
 import {
   Container,
