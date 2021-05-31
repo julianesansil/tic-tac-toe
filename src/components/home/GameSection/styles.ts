@@ -27,6 +27,11 @@ export const PlayersArea = styled.div`
 
   @media (max-width: 800px) {
     flex-direction: row;
+    column-gap: 30px;
+  }
+
+  @media (max-width: 400px) {
+    column-gap: 0;
   }
 `;
 
@@ -45,7 +50,7 @@ export const TimerArea = styled(Block)`
 
   @media (max-width: 800px) {
     flex-basis: 0;
-    min-width: 100px;
+    min-width: 90px;
   }
 `;
 
