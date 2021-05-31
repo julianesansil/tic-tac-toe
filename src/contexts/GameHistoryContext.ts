@@ -1,21 +1,36 @@
 /* eslint-disable @typescript-eslint/no-empty-function */
 import { createContext, useContext } from 'react';
 
-export type PlayerOption = 'P1' | 'P2' | '-';
+export interface GameInfo {
+  winnersPerMatch: PlayerOption[];
+  scoreBoard: ScoreBoard;
+  totalSeconds: number;
+}
+export type PlayerOption = 'P1' | 'P2' | 'tie';
+export interface ScoreBoard {
+  P1: number;
+  P2: number;
+  tie: number;
+}
 
 export type GameHistoryContextProps = {
-  victoriesHistory: PlayerOption[];
-  setVictoriesHistory: (victoriesHistory: PlayerOption[]) => void;
-
-  totalSeconds: number;
-  setTotalSeconds: (totalSeconds: number) => void;
+  info: {
+    winnersPerMatch: PlayerOption[];
+    scoreBoard: ScoreBoard;
+    totalSeconds: number;
+  };
+  setInfo: (gameInfo: GameInfo) => void;
+  resetContext: () => void;
 };
 
 export const GameHistoryContext = createContext<GameHistoryContextProps>({
-  victoriesHistory: [],
-  setVictoriesHistory: () => {},
-  totalSeconds: 0,
-  setTotalSeconds: () => {},
+  info: {
+    winnersPerMatch: [],
+    scoreBoard: { P1: 0, P2: 0, tie: 0 },
+    totalSeconds: 0,
+  },
+  setInfo: () => {},
+  resetContext: () => {},
 });
 
 export const useGameHistory = (): GameHistoryContextProps => {

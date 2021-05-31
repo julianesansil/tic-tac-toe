@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { ThemeColors } from 'theme';
 import LayoutContainer from 'components/layout/Container';
 import Typography from 'components/common/Typography';
 
@@ -13,15 +14,28 @@ export const Flex = styled.div`
   display: flex;
   justify-content: center;
   gap: 6px;
-  margin-bottom: 30px;
 `;
 
 export const GameHistory = styled.div`
   display: flex;
+  flex-direction: column;
   flex-grow: wrap;
   align-items: center;
   justify-content: space-evenly;
+
+  margin-bottom: 50px;
+  gap: 30px;
   text-align: center;
+
+  & > div:nth-child(2) {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+  }
+
+  @media (min-width: 768px) {
+    flex-direction: row;
+  }
 `;
 
 export const PlayersInfo = styled.div`
@@ -64,13 +78,13 @@ export const VL = styled(Typography).attrs(() => ({
   margin: { top: '8px' },
 }))``;
 
-export const Bagde = styled.div`
+export const Bagde = styled.div<{ backgroundColor: ThemeColors }>`
   display: flex;
   align-items: center;
   justify-content: center;
   height: 40px;
   width: 40px;
-  background-color: ${props => props.theme.colors.newGrey};
+  background-color: ${props => props.theme.colors[props.backgroundColor]};
   border-radius: 50%;
 `;
 

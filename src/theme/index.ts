@@ -2,6 +2,7 @@ const defaultTheme = {
   colors: {
     blue: '#37A8EE',
     green: '#00DCA4',
+    red: '#FF6961',
     yellow: '#F1C40F',
     white: '#FFFFFF',
 

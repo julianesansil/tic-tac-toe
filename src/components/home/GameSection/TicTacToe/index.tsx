@@ -26,9 +26,9 @@ const TicTacToe = (props: TicTacToeProps): React.ReactElement => {
   const counter = useRef<number>(0);
 
   const clearGame = () => {
-    counter.current = 0;
-    setCurrentValue(ValueOption.X);
     setGrid(new Array(gridSize).fill(new Array(gridSize).fill(undefined)));
+    setCurrentValue(ValueOption.X);
+    counter.current = 0;
   };
 
   useEffect(() => {
@@ -41,24 +41,41 @@ const TicTacToe = (props: TicTacToeProps): React.ReactElement => {
     }
   }, [newGame]);
 
-  const saveWinner = (value: ValueOption | undefined) => {
-    let winner: PlayerOption = '-';
+  const endMatch = (value: ValueOption | undefined) => {
+    let winner: PlayerOption;
+    let message = `Match ${
+      gameHistoryContext.info.winnersPerMatch.length + 1
+    }: `;
+
     if (value === ValueOption.X) {
       winner = 'P1';
+      message += 'player 1 wins! ;)';
     } else if (value === ValueOption.O) {
       winner = 'P2';
+      message += 'player 2 wins! ;)';
+    } else {
+      winner = 'tie';
+      message += "it's a tie! :/";
     }
+    setTimeout(() => {
+      alert(message);
+    }, 500);
 
-    gameHistoryContext.setVictoriesHistory([
-      ...gameHistoryContext.victoriesHistory,
-      winner,
-    ]);
+    gameHistoryContext.setInfo({
+      ...gameHistoryContext.info,
+      winnersPerMatch: [...gameHistoryContext.info.winnersPerMatch, winner],
+      scoreBoard: {
+        ...gameHistoryContext.info.scoreBoard,
+        [winner]: gameHistoryContext.info.scoreBoard[winner] + 1,
+      },
+    });
   };
 
   const calculateCurrentResult = (
     rowPosition: number,
     columnPosition: number,
   ) => {
+    let matchOver = false;
     const square = grid[rowPosition][columnPosition];
     let checkRows = 0;
     let checkColumns = 0;
@@ -76,22 +93,23 @@ const TicTacToe = (props: TicTacToeProps): React.ReactElement => {
         checkDiagonal2 += grid[i][gridSize - i - 1] === square ? 1 : 0;
       }
 
-      // Game won
+      // Match won
       if (
         checkRows === gridSize ||
         checkColumns === gridSize ||
         checkDiagonal1 === gridSize ||
         checkDiagonal2 === gridSize
       ) {
-        saveWinner(square);
+        matchOver = true;
+        endMatch(square);
         setIsPlaying(false);
         break;
       }
     }
 
-    // Game tied
-    if (counter.current === gridSize ** 2) {
-      saveWinner(undefined);
+    // Match tied
+    if (!matchOver && counter.current === gridSize ** 2) {
+      endMatch(undefined);
       setIsPlaying(false);
     }
   };

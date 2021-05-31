@@ -18,6 +18,10 @@ import {
   PlayerScoreValue,
 } from './styles';
 
+interface GameSectionProps {
+  resetNextMatch: boolean;
+}
+
 const GAME_INFO = {
   0: {
     name: '3x3',
@@ -34,16 +38,14 @@ const GAME_INFO = {
 };
 type GameId = keyof typeof GAME_INFO;
 
-const GameSection = (): React.ReactElement => {
+const GameSection = (props: GameSectionProps): React.ReactElement => {
   const gameHistoryContext = useGameHistory();
+  const { resetNextMatch } = props;
   const initialTimer = '00:00:00';
 
   const [selectedGame, setSelectedGame] = useState<GameId>(0);
   const [isPlaying, setIsPlaying] = useState<boolean>(false);
   const [timer, setTimer] = useState<string>(initialTimer);
-
-  const [vCounter1, setVCounter1] = useState<number>(0);
-  const [vCounter2, setVCounter2] = useState<number>(0);
 
   const intervalRef = useRef<NodeJS.Timeout | null>(null);
   const counterRef = useRef<number>(0);
@@ -59,9 +61,11 @@ const GameSection = (): React.ReactElement => {
       }, 1000);
     } else {
       if (counterRef.current) {
-        gameHistoryContext.setTotalSeconds(
-          (gameHistoryContext.totalSeconds + counterRef.current) as number,
-        );
+        gameHistoryContext.setInfo({
+          ...gameHistoryContext.info,
+          totalSeconds: (gameHistoryContext.info.totalSeconds +
+            counterRef.current) as number,
+        });
       }
       if (intervalRef.current) {
         clearInterval(intervalRef.current as NodeJS.Timeout);
@@ -73,22 +77,12 @@ const GameSection = (): React.ReactElement => {
     return () => clearInterval(intervalRef.current as NodeJS.Timeout);
   }, []);
 
-  useEffect(() => {
-    let victories1 = 0;
-    let victories2 = 0;
-    gameHistoryContext.victoriesHistory.forEach(winner => {
-      if (winner === 'P1') {
-        victories1 += 1;
-      }
-      if (winner === 'P2') {
-        victories2 += 1;
-      }
-    });
-    setVCounter1(victories1);
-    setVCounter2(victories2);
-
-    return () => clearInterval(intervalRef.current as NodeJS.Timeout);
-  }, [gameHistoryContext.victoriesHistory]);
+  const startMatch = () => {
+    if (resetNextMatch) {
+      gameHistoryContext.resetContext();
+    }
+    setIsPlaying(true);
+  };
 
   const renderGameTab = (gameId: GameId) => {
     const game = GAME_INFO[gameId];
@@ -125,7 +119,7 @@ const GameSection = (): React.ReactElement => {
             Playing...
           </Typography>
         ) : (
-          <Button disabled={isPlaying} onClick={() => setIsPlaying(true)}>
+          <Button disabled={isPlaying} onClick={startMatch}>
             START!
           </Button>
         )}
@@ -134,7 +128,9 @@ const GameSection = (): React.ReactElement => {
       <PlayersArea>
         <Block order={2}>
           <PlayerLabel>Player 1</PlayerLabel>
-          <PlayerScoreValue>{vCounter1}</PlayerScoreValue>
+          <PlayerScoreValue>
+            {gameHistoryContext.info.scoreBoard.P1}
+          </PlayerScoreValue>
         </Block>
 
         <GameArea order={1}>
@@ -149,7 +145,9 @@ const GameSection = (): React.ReactElement => {
 
         <Block order={4}>
           <PlayerLabel>Player 2</PlayerLabel>
-          <PlayerScoreValue>{vCounter2}</PlayerScoreValue>
+          <PlayerScoreValue>
+            {gameHistoryContext.info.scoreBoard.P2}
+          </PlayerScoreValue>
         </Block>
 
         <TimerArea order={3}>

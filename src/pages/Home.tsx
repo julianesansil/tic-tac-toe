@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 
-import { GameHistoryContext, PlayerOption } from 'contexts/GameHistoryContext';
+import { MAX_MATCHES, MAX_VICTORIES } from 'constants/game';
+import { GameHistoryContext, GameInfo } from 'contexts/GameHistoryContext';
 
 import Header from 'components/layout/Header';
 import Footer from 'components/layout/Footer';
@@ -9,8 +10,48 @@ import GameSection from 'components/home/GameSection';
 import StatisticsSection from 'components/home/StatisticsSection';
 
 const Home = (): React.ReactElement => {
-  const [victoriesHistory, setVictoriesHistory] = useState<PlayerOption[]>([]);
-  const [totalSeconds, setTotalSeconds] = useState<number>(0);
+  const newGameHistory = {
+    winnersPerMatch: [],
+    scoreBoard: {
+      P1: 0,
+      P2: 0,
+      tie: 0,
+    },
+    totalSeconds: 0,
+  };
+  const [gameHistory, setGameHistory] = useState<GameInfo>(newGameHistory);
+  const [resetNextMatch, setResetNextMatch] = useState<boolean>(false);
+
+  const statisticsRef = useRef<HTMLDivElement>(null);
+
+  const endGame = () => {
+    setResetNextMatch(true);
+
+    let message = 'Game over!';
+    if (gameHistory.scoreBoard.P1 === MAX_VICTORIES) {
+      message += '\nCongrats, player 1, you won the game! \\o/';
+    } else if (gameHistory.scoreBoard.P2 === MAX_VICTORIES) {
+      message += '\nCongrats, player 2, you won the game! \\o/';
+    } else if (gameHistory.winnersPerMatch.length === MAX_MATCHES) {
+      message += ' Oh, it tied! :(\nPlay again...';
+    }
+
+    setTimeout(() => {
+      alert(message);
+      statisticsRef?.current?.scrollIntoView();
+    }, 500);
+  };
+
+  useEffect(() => {
+    setResetNextMatch(false);
+    if (
+      gameHistory.winnersPerMatch.length === MAX_MATCHES ||
+      gameHistory.scoreBoard.P1 === MAX_VICTORIES ||
+      gameHistory.scoreBoard.P2 === MAX_VICTORIES
+    ) {
+      endGame();
+    }
+  }, [gameHistory.scoreBoard]);
 
   return (
     <>
@@ -19,14 +60,15 @@ const Home = (): React.ReactElement => {
 
       <GameHistoryContext.Provider
         value={{
-          victoriesHistory,
-          setVictoriesHistory,
-          totalSeconds,
-          setTotalSeconds,
+          info: gameHistory,
+          setInfo: setGameHistory,
+          resetContext: () => setGameHistory(newGameHistory),
         }}
       >
-        <GameSection />
-        <StatisticsSection />
+        <GameSection resetNextMatch={resetNextMatch} />
+        <div ref={statisticsRef}>
+          <StatisticsSection />
+        </div>
       </GameHistoryContext.Provider>
 
       <Footer />

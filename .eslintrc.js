@@ -21,6 +21,7 @@ module.exports = {
   rules: {
     'react/jsx-filename-extension': ['warn', { extensions: ['.tsx'] }],
     'react/jsx-props-no-spreading': 'off',
+    'react/no-array-index-key': 'off',
     'react/prop-types': 'off',
     'react/require-default-props': 'off',
     'react-hooks/rules-of-hooks': 'error',

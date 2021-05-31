@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react';
 
+import { MAX_MATCHES } from 'constants/game';
 import TimeHelper from 'helpers/timeHelper';
-import { useGameHistory } from 'contexts/GameHistoryContext';
+import { PlayerOption, useGameHistory } from 'contexts/GameHistoryContext';
 import Typography from 'components/common/Typography';
 import {
   Container,
@@ -20,57 +21,37 @@ import {
 
 const StatisticsSection = (): React.ReactElement => {
   const gameHistoryContext = useGameHistory();
-  const maxMatches = 9;
+  const matchsCounter = gameHistoryContext.info.winnersPerMatch.length;
 
   const [playedMatchs, setPlayedMatchs] = useState<boolean[]>(
-    new Array(maxMatches).fill(false),
+    new Array(MAX_MATCHES).fill(false),
   );
   const [winners, setWinners] = useState<string[]>(
-    new Array(maxMatches).fill(undefined),
+    new Array(MAX_MATCHES).fill(undefined),
   );
-  const [vPercentage1, setVPercentage1] = useState<number>(0);
-  const [vPercentage2, setVPercentage2] = useState<number>(0);
-  const [tiePercentage, setTiePercentage] = useState<number>(0);
 
   useEffect(() => {
-    const matchsCounter = gameHistoryContext.victoriesHistory.length;
-
-    let victories1 = 0;
-    let victories2 = 0;
-    let ties = 0;
-    gameHistoryContext.victoriesHistory.forEach(winner => {
-      if (winner === 'P1') {
-        victories1 += 1;
-      }
-      if (winner === 'P2') {
-        victories2 += 1;
-      }
-      if (winner === '-') {
-        ties += 1;
-      }
-    });
-    setVPercentage1(
-      matchsCounter ? Math.floor((victories1 / matchsCounter) * 100) : 0,
-    );
-    setVPercentage2(
-      matchsCounter ? Math.floor((victories2 / matchsCounter) * 100) : 0,
-    );
-    setTiePercentage(
-      matchsCounter ? Math.floor((ties / matchsCounter) * 100) : 0,
-    );
-
     setPlayedMatchs(
       playedMatchs.map((checked, index) => index < matchsCounter),
     );
     setWinners(
       winners.map(
-        (winner, index) => gameHistoryContext.victoriesHistory[index],
+        (winner, index) => gameHistoryContext.info.winnersPerMatch[index],
       ),
     );
-  }, [gameHistoryContext.victoriesHistory]);
+  }, [gameHistoryContext.info.winnersPerMatch]);
+
+  const calculateVictoriesPercentage = (player: PlayerOption) => {
+    if (matchsCounter) {
+      return Math.floor(
+        (gameHistoryContext.info.scoreBoard[player] / matchsCounter) * 100,
+      );
+    }
+    return 0;
+  };
 
   return (
-    <Container as="section">
+    <Container as="section" id="statistics-section">
       <Title>Awesome Statistics</Title>
 
       <Typography margin={{ top: '14px', bottom: '60px' }}>
@@ -86,15 +67,19 @@ const StatisticsSection = (): React.ReactElement => {
               <PlayerLabel>Player 1</PlayerLabel>
               <div>
                 <div>
-                  <Bagde>
-                    <PlayerPercentage>{vPercentage1}%</PlayerPercentage>
+                  <Bagde backgroundColor="green">
+                    <PlayerPercentage>
+                      {calculateVictoriesPercentage('P1')}%
+                    </PlayerPercentage>
                   </Bagde>
                   <VL>V</VL>
                 </div>
 
                 <div>
-                  <Bagde>
-                    <PlayerPercentage>{vPercentage2}%</PlayerPercentage>
+                  <Bagde backgroundColor="red">
+                    <PlayerPercentage>
+                      {calculateVictoriesPercentage('P2')}%
+                    </PlayerPercentage>
                   </Bagde>
                   <VL>L</VL>
                 </div>
@@ -105,15 +90,19 @@ const StatisticsSection = (): React.ReactElement => {
               <PlayerLabel>Player 2</PlayerLabel>
               <div>
                 <div>
-                  <Bagde>
-                    <PlayerPercentage>{vPercentage2}%</PlayerPercentage>
+                  <Bagde backgroundColor="green">
+                    <PlayerPercentage>
+                      {calculateVictoriesPercentage('P2')}%
+                    </PlayerPercentage>
                   </Bagde>
                   <VL>V</VL>
                 </div>
 
                 <div>
-                  <Bagde>
-                    <PlayerPercentage>{vPercentage1}%</PlayerPercentage>
+                  <Bagde backgroundColor="red">
+                    <PlayerPercentage>
+                      {calculateVictoriesPercentage('P1')}%
+                    </PlayerPercentage>
                   </Bagde>
                   <VL>L</VL>
                 </div>
@@ -122,36 +111,42 @@ const StatisticsSection = (): React.ReactElement => {
 
             <div>
               <PlayerLabel>Ties</PlayerLabel>
-              <Bagde>
-                <PlayerPercentage>{tiePercentage}%</PlayerPercentage>
+              <Bagde backgroundColor="yellow">
+                <PlayerPercentage>
+                  {calculateVictoriesPercentage('tie')}%
+                </PlayerPercentage>
               </Bagde>
             </div>
           </PlayersInfo>
         </div>
 
         <div>
-          <Subtitle>Played matchs</Subtitle>
-          <Flex>
-            {playedMatchs.map(checked => (
-              <CheckMark checked={checked} />
-            ))}
-          </Flex>
+          <div>
+            <Subtitle>Played matchs</Subtitle>
+            <Flex>
+              {playedMatchs.map((checked, index) => (
+                <CheckMark key={index} checked={checked} />
+              ))}
+            </Flex>
+          </div>
 
-          <Subtitle>Game history</Subtitle>
-          <Flex>
-            {winners.map(winner => (
-              <Square>
-                <Typography>{winner}</Typography>
-              </Square>
-            ))}
-          </Flex>
+          <div>
+            <Subtitle>Game history</Subtitle>
+            <Flex>
+              {winners.map((winner, index) => (
+                <Square key={index}>
+                  <Typography>{winner}</Typography>
+                </Square>
+              ))}
+            </Flex>
+          </div>
         </div>
       </GameHistory>
 
       <div>
         <Subtitle>Total time</Subtitle>
         <Typography fontSize="22px">
-          {TimeHelper.toHHMMSS(gameHistoryContext.totalSeconds)}
+          {TimeHelper.toHHMMSS(gameHistoryContext.info.totalSeconds)}
         </Typography>
       </div>
     </Container>
