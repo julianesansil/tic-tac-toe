@@ -1,46 +1,60 @@
-# Getting Started with Create React App
+# Tic Tac Toe
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Project published in: https://julianesansil.github.io/tic-tac-toe/
 
-## Available Scripts
+Developed in [ReactJS](https://pt-br.reactjs.org/), based on [SWORD Health repository](https://github.com/SWORDHealth/frontend-interview).
 
-In the project directory, you can run:
 
-### `yarn start`
+## Content
+  
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+  - [Checklist](#checklist)
+    - [Requirements](#requirements)
+    - [Bonus Requirements](#bonus-requirements)
+  - [Run](#run)
+  - [Project dependencies](#project-dependencies)
 
-### `yarn test`
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Checklist
 
-### `yarn build`
+### Requirements
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- [x] Header
+  - [x] Fixed header during site navigation.
+  - [x] Background transparent after 150 pixels.
+- [ ] Game section
+  - [x] Tic-tac-toe (first player to win 5 games wins as a rule).
+  - [x] Wins detected, players wins counter and wins history saved.
+  - [x] Time counter per game.
+  - [x] When one of the players reaches the needed amount of wins, page gives congrats and scrolls to next section.
+  - [ ] Highlight victory line and tokens.
+- [x] Statistics section
+  - [x] Percentage of wins for each player, with feedback color on values (green, yellow, red).
+  - [x] History of game winners.
+  - [x] Aggregated play time.
+- [x] Profile section
+- [x] Footer
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### Bonus requirements
 
-### `yarn eject`
+- [x] Dynamic grid tic-tac-toe
+  - [x] Different game grid sizes: 3x3, 6x6, 9x9.
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## Run locally
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+- Prerequisite: `node`/`npm`.
+- In the project folder, run:
+  - `npm install` or `yarn` to install the dependencies.
+  - `npm run start` or `yarn start` to run the project.
+- Open http://localhost:3000 to view it in the browser.
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
 
-## Learn More
+## Project dependencies
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+- ESLint: https://eslint.org/
+- Prettier: https://prettier.io/
+- TypeScript: https://www.typescriptlang.org/
+- Styled Components: https://www.styled-components.com/
