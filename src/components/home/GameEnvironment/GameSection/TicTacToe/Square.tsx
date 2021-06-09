@@ -9,33 +9,32 @@ import ValueOption from './types';
 
 interface SquareProps {
   value: ValueOption;
-  isSquareHighlighted?: boolean;
   disabled?: boolean;
+  isHighlighted?: boolean;
   onClick: () => void;
 }
 
-export const Container = styled.button<{ isSquareHighlighted?: boolean }>`
+export const Container = styled.button<{ isHighlighted?: boolean }>`
   width: 50px;
   height: 50px;
-
   background-color: ${props =>
-    props.isSquareHighlighted ? props.theme.colors.newGrey : undefined};
+    props.isHighlighted ? props.theme.colors.newGrey : undefined};
 `;
 
 const Square = (props: SquareProps): React.ReactElement => {
-  const { value, isSquareHighlighted, disabled, onClick } = props;
+  const { value, disabled, isHighlighted, onClick } = props;
 
   return (
     <Container
-      isSquareHighlighted={isSquareHighlighted}
+      isHighlighted={isHighlighted}
       disabled={disabled}
       onClick={onClick}
     >
       {value === ValueOption.X && (
-        <img src={isSquareHighlighted ? XBrightIcon : XDarkIcon} alt="X" />
+        <img src={isHighlighted ? XBrightIcon : XDarkIcon} alt="X" />
       )}
       {value === ValueOption.O && (
-        <img src={isSquareHighlighted ? OBrightIcon : ODarkIcon} alt="O" />
+        <img src={isHighlighted ? OBrightIcon : ODarkIcon} alt="O" />
       )}
     </Container>
   );

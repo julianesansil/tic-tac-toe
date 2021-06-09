@@ -6,8 +6,6 @@ export const FlexContainer = styled(Container)`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding-top: 30px;
-  padding-bottom: 30px;
 `;
 
 export const Column1 = styled.div`
@@ -15,7 +13,7 @@ export const Column1 = styled.div`
   flex: 1;
   flex-direction: column;
   align-items: center;
-  gap: 20px;
+  gap: 26px;
   text-align: center;
 
   @media (min-width: 768px) {

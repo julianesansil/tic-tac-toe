@@ -7,8 +7,6 @@ export const FlexContainer = styled(Container)`
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
-  padding-top: 50px;
-  padding-bottom: 50px;
 
   background-color: ${props => props.theme.colors.lighGrey};
   gap: 30px;
@@ -49,5 +47,5 @@ export const Title = styled(Typography).attrs(() => ({
 }))``;
 
 export const Text = styled(Typography).attrs(() => ({
-  fontSize: '14px',
+  fontSize: '15px',
 }))``;

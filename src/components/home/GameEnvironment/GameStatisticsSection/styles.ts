@@ -4,8 +4,6 @@ import LayoutContainer from 'components/layout/Container';
 import Typography from 'components/common/Typography';
 
 export const Container = styled(LayoutContainer)`
-  padding-top: 50px;
-  padding-bottom: 50px;
   background-color: ${props => props.theme.colors.white};
   text-align: center;
 `;

@@ -16,6 +16,7 @@ const Button = styled.button<ButtonProps>`
   border: none;
   color: ${props =>
     props.selected ? props.theme.colors.white : props.theme.colors.darkGrey};
+  cursor: pointer;
 
   ${props =>
     props.icon

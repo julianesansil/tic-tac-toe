@@ -4,8 +4,6 @@ import LayoutContainer from 'components/layout/Container';
 import Typography from 'components/common/Typography';
 
 export const Container = styled(LayoutContainer)`
-  padding-top: 50px;
-  padding-bottom: 50px;
   background-color: ${props => props.theme.colors.lighGrey};
   text-align: center;
 `;
@@ -42,11 +40,12 @@ export const GameArea = styled(Block)`
   border: solid 1px ${props => props.theme.colors.grey};
 
   @media (max-width: 800px) {
-    width: 90%;
+    flex-basis: 100%;
   }
 
-  @media (max-width: 576px) {
+  @media (max-width: 500px) {
     height: 300px;
+    width: 300px;
   }
 `;
 
@@ -65,8 +64,8 @@ export const Center = styled.div`
   align-items: center;
   height: 100%;
 
-  @media (max-width: 576px) {
-    transform: scale(0.55);
+  @media (max-width: 500px) {
+    transform: scale(0.66);
   }
 `;
 

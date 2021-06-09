@@ -9,9 +9,9 @@ export const FixedContainer = styled.div<{ isTransparentBackground: boolean }>`
 
   background-color: ${props =>
     props.isTransparentBackground
-      ? props.theme.colors.greyAlpha70
+      ? props.theme.colors.greyAlpha60
       : props.theme.colors.grey};
-  transition: background-color 0.9s ease;
+  transition: background-color 0.7s ease;
 `;
 
 export const FlexContainer = styled(Container)`

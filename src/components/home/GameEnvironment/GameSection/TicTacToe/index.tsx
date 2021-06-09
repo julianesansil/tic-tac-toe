@@ -176,11 +176,8 @@ const TicTacToe = (props: TicTacToeProps): React.ReactElement => {
           <Square
             key={`${rowPosition + columnPosition}`}
             value={square}
-            isSquareHighlighted={isSquareHighlighted(
-              rowPosition,
-              columnPosition,
-            )}
             disabled={!newGame}
+            isHighlighted={isSquareHighlighted(rowPosition, columnPosition)}
             onClick={() => handleSquareClick(rowPosition, columnPosition)}
           />
         )),

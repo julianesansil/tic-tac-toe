@@ -15,7 +15,7 @@ import {
 } from './styles';
 
 const Footer = (): React.ReactElement => {
-  const [emailToSubscribe, setEmailToSubscribe] = useState<string>();
+  const [emailToSubscribe, setEmailToSubscribe] = useState<string>('');
 
   const handleEmailChange = (event: FormEvent<HTMLInputElement>) => {
     const { value } = event.target as HTMLInputElement;
@@ -26,6 +26,7 @@ const Footer = (): React.ReactElement => {
     event.preventDefault();
     if (emailToSubscribe) {
       alert(`${emailToSubscribe} has been subscribed. :)`);
+      setEmailToSubscribe('');
     } else {
       alert(`Add an email to subscribe. ;)`);
     }
@@ -66,7 +67,7 @@ const Footer = (): React.ReactElement => {
                 <img
                   src={media.logo}
                   alt={`${media.name} logo`}
-                  height="20px"
+                  height="22px"
                 />
               </a>
             ))}
@@ -78,11 +79,13 @@ const Footer = (): React.ReactElement => {
                 type: 'email',
                 width: '150px',
                 placeholder: 'Subscribe our games',
+                value: emailToSubscribe,
                 onChange: handleEmailChange,
               }}
               buttonProps={{
                 type: 'submit',
                 children: <img src={SendIcon} alt="Send icon" height="12px" />,
+                backgroundColor: emailToSubscribe.length > 0 ? 'blue' : 'grey',
               }}
             />
           </form>

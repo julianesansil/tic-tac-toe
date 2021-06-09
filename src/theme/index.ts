@@ -11,7 +11,7 @@ const defaultTheme = {
     darkGrey: '#2C2E30',
     newGrey: '#808080',
 
-    greyAlpha70: '#D8D8D8B3', // RRGGBBAA
+    greyAlpha60: '#D8D8D899', // RRGGBBAA
   },
   fonts: 'GlacialIndifference, sans-serif',
   lineHeight: {

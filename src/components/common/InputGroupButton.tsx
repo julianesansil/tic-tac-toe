@@ -21,7 +21,7 @@ const InputGroupButton = (props: InputGroupButtonProps): React.ReactElement => {
   return (
     <FlexContainer>
       <Input {...inputProps} />
-      <Button backgroundColor="grey" icon {...buttonProps} />
+      <Button icon {...buttonProps} />
     </FlexContainer>
   );
 };

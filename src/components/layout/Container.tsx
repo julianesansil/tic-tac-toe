@@ -1,8 +1,7 @@
 import styled from 'styled-components';
 
 const Container = styled.div`
-  padding-left: 5%;
-  padding-right: 5%;
+  padding: 54px 5%;
 
   @media (min-width: 1200px) {
     padding-left: calc((100% - 992px) / 2);
