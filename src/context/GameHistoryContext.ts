@@ -14,11 +14,7 @@ export interface ScoreBoard {
 }
 
 export type GameHistoryContextProps = {
-  info: {
-    winnersPerMatch: PlayerOption[];
-    scoreBoard: ScoreBoard;
-    totalSeconds: number;
-  };
+  info: GameInfo;
   setInfo: (gameInfo: GameInfo) => void;
   resetContext: () => void;
 };

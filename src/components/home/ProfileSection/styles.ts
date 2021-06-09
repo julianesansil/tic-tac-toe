@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import Container from 'components/layout/Container';
+import Typography from 'components/common/Typography';
 
 export const FlexContainer = styled(Container)`
   display: flex;
@@ -37,3 +38,7 @@ export const Avatar = styled.img`
   height: 120px;
   width: 120px;
 `;
+
+export const SpacedText = styled(Typography).attrs(() => ({
+  lineHeight: 'spaced',
+}))``;

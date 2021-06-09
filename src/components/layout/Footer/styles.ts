@@ -20,7 +20,7 @@ export const FlexContainer = styled(Container)`
   }
 `;
 
-export const Section = styled.section`
+export const Column = styled.div`
   flex: 1;
   align-items: center;
   justify-content: center;
@@ -34,7 +34,7 @@ export const Center = styled.div`
 
 export const SocialMedia = styled.div`
   display: flex;
-  margin-bottom: 8px;
+  margin-bottom: 10px;
   gap: 8px;
   justify-content: center;
 

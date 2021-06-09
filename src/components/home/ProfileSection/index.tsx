@@ -1,63 +1,56 @@
 import React from 'react';
 
-import Typography from 'components/common/Typography';
-import ProfilePhoto from 'assets/images/profile_photo.jpg';
-import { Avatar, Column1, Column2, FlexContainer } from './styles';
+import PROFILE_INFORMATION from 'constants/profileInformation';
+import { FlexContainer, Column1, Column2, Avatar, SpacedText } from './styles';
 
 const ProfileSection = (): React.ReactElement => {
   return (
     <FlexContainer as="section">
-      <Column1>
-        <Avatar src={ProfilePhoto} alt="Juliane's profile" />
+      <Column1 as="article">
+        <Avatar
+          src={PROFILE_INFORMATION.photo}
+          alt={`${PROFILE_INFORMATION.name}'s photo`}
+        />
 
         <div>
-          <Typography
-            variant="subtitle1"
-            fontSize="30px"
-            fontStyle="bold"
-            lineHeight="spaced"
-          >
-            Juliane Silva
-          </Typography>
+          <SpacedText variant="subtitle1" fontSize="30px" fontStyle="bold">
+            {PROFILE_INFORMATION.name}
+          </SpacedText>
 
-          <Typography lineHeight="spaced">Age: 29</Typography>
-          <Typography lineHeight="spaced">Location: Porto, Porto</Typography>
-          <Typography lineHeight="spaced">
-            Ocupation: Frontend Developer
-          </Typography>
-          <Typography lineHeight="spaced">
+          <SpacedText>Age: {PROFILE_INFORMATION.age}</SpacedText>
+          <SpacedText>Location: {PROFILE_INFORMATION.location}</SpacedText>
+          <SpacedText>Ocupation: {PROFILE_INFORMATION.ocupation}</SpacedText>
+
+          <SpacedText>
             LinkedIn:{' '}
             <a
-              href="https://www.linkedin.com/in/jlsansil/"
+              href={PROFILE_INFORMATION.linkedIn.url}
               target="_blank"
               rel="noreferrer"
             >
-              @jlsansil
+              {PROFILE_INFORMATION.linkedIn.name}
             </a>
-          </Typography>
+          </SpacedText>
         </div>
       </Column1>
 
-      <Column2>
-        <Typography textAlign="end" fontSize="18px">
+      <Column2 as="article">
+        <SpacedText textAlign="end" fontSize="18px">
           About me:
-        </Typography>
+        </SpacedText>
 
-        <Typography lineHeight="spaced" textAlign="end" margin={{ top: '6px' }}>
-          I&apos;m from Brazil, and I&apos;ve been here in Porto since December
-          last year.
-        </Typography>
-        <Typography lineHeight="spaced" textAlign="end" margin={{ top: '6px' }}>
-          I’ve been working with software development since 2015. I&apos;ve
-          worked with AngularJS and React Native on the frontend and with
-          Node.js and Java on the backend; and, I&apos;m currently working on a
-          React project.
-        </Typography>
-        <Typography lineHeight="spaced" textAlign="end" margin={{ top: '6px' }}>
-          I already had a startup, with the objective of helping in the
-          treatment of autistic children, but it closed down. ^^’ But I still
-          hope to help people through my work.
-        </Typography>
+        {PROFILE_INFORMATION.about.split('\n').map(
+          paragraph =>
+            paragraph && (
+              <SpacedText
+                key={paragraph.substring(10)}
+                textAlign="end"
+                margin={{ top: '6px' }}
+              >
+                {paragraph}
+              </SpacedText>
+            ),
+        )}
       </Column2>
     </FlexContainer>
   );

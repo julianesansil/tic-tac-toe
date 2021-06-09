@@ -2,8 +2,8 @@ import React, { useEffect, useRef, useState } from 'react';
 import styled from 'styled-components';
 
 import { PlayerOption, useGameHistory } from 'context/GameHistoryContext';
-import ValueOption from './types';
 import Square from './Square';
+import ValueOption from './types';
 
 interface TicTacToeProps {
   newGame: boolean;
@@ -82,8 +82,8 @@ const TicTacToe = (props: TicTacToeProps): React.ReactElement => {
     rowPosition: number,
     columnPosition: number,
   ) => {
-    let matchOver = false;
     const square = grid[rowPosition][columnPosition];
+    let matchOver = false;
     let checkRows = 0;
     let checkColumns = 0;
     let checkDiagonal1 = 0;
@@ -101,21 +101,21 @@ const TicTacToe = (props: TicTacToeProps): React.ReactElement => {
       }
 
       // Match won
-      if (
-        checkRows === gridSize ||
-        checkColumns === gridSize ||
-        checkDiagonal1 === gridSize ||
-        checkDiagonal2 === gridSize
-      ) {
+      const winningDirection =
+        (checkRows === gridSize && 'row') ||
+        (checkColumns === gridSize && 'column') ||
+        (checkDiagonal1 === gridSize && 'diagonal1') ||
+        (checkDiagonal2 === gridSize && 'diagonal2') ||
+        undefined;
+
+      if (winningDirection) {
         matchOver = true;
 
-        const direction =
-          (checkRows === gridSize && 'row') ||
-          (checkColumns === gridSize && 'column') ||
-          (checkDiagonal1 === gridSize && 'diagonal1') ||
-          (checkDiagonal2 === gridSize && 'diagonal2') ||
-          undefined;
-        setWinningMove({ direction, rowPosition, columnPosition });
+        setWinningMove({
+          direction: winningDirection,
+          rowPosition,
+          columnPosition,
+        });
 
         setIsPlaying(false);
         endMatch(square);

@@ -9,17 +9,17 @@ export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
 }
 
 const Button = styled.button<ButtonProps>`
-  color: ${props =>
-    props.selected ? props.theme.colors.white : props.theme.colors.darkGrey};
   background-color: ${props =>
     props.theme.colors[
       props.backgroundColor || (props.selected ? 'newGrey' : 'white')
     ]};
   border: none;
+  color: ${props =>
+    props.selected ? props.theme.colors.white : props.theme.colors.darkGrey};
 
   ${props =>
     props.icon
-      ? `height: 24px;`
+      ? `height: 28px;`
       : `
         height: 32px;
         padding: 0 16px;

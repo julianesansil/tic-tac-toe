@@ -6,14 +6,14 @@ interface InputProps {
 }
 
 const Input = styled.input<InputProps>`
-  height: 20px;
+  height: 18px;
   width: ${props => props.width};
+  padding: 4px 8px;
   border: solid 1px ${props => props.theme.colors.grey};
-  font-size: 12px;
+  font-size: 13px;
 
   ::placeholder {
     color: ${props => props.theme.colors.grey};
-    padding: 10px 4px;
   }
 `;
 

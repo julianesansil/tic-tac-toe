@@ -1,15 +1,14 @@
 import React, { FormEvent, useState } from 'react';
 
-import FacebookLogo from 'assets/images/facebook.svg';
-import InstagramLogo from 'assets/images/instagram.svg';
-import TwitterLogo from 'assets/images/twitter.svg';
 import SendIcon from 'assets/images/send.svg';
-
+import COMPANY_INFORMATION from 'constants/companyInformation';
+import PROFILE_INFORMATION from 'constants/profileInformation';
 import InputGroupButton from 'components/common/InputGroupButton';
+
 import {
   Center,
   FlexContainer,
-  Section,
+  Column,
   SocialMedia,
   Text,
   Title,
@@ -34,50 +33,43 @@ const Footer = (): React.ReactElement => {
 
   return (
     <FlexContainer as="footer">
-      <Section>
+      <Column as="article">
         <Center>
           <Title margin={{ bottom: '20px' }}>About page</Title>
           <Text>Play tic tac toe</Text>
-          <Text margin={{ top: '10px' }}>Created by Juliane Silva</Text>
+          <Text margin={{ top: '10px' }}>
+            Created by {PROFILE_INFORMATION.name}
+          </Text>
         </Center>
-      </Section>
+      </Column>
 
-      <Section>
+      <Column as="article">
         <Center>
           <Title margin={{ bottom: '20px' }}>Contacts</Title>
-          <Text>(+351) 123 456 789</Text>
-          <Text margin={{ top: '10px' }}>Rua Sá da Bandeira, 111, Porto</Text>
+          <Text>{COMPANY_INFORMATION.phone}</Text>
+          <Text margin={{ top: '10px' }}>{COMPANY_INFORMATION.address}</Text>
         </Center>
-      </Section>
+      </Column>
 
-      <Section>
+      <Column as="article">
         <Center>
           <Title margin={{ bottom: '12px' }}>Stay in touch</Title>
 
           <SocialMedia>
-            <a
-              href="https://www.facebook.com/SWORDHealth1"
-              target="_blank"
-              rel="noreferrer"
-            >
-              <img src={FacebookLogo} alt="Facebook logo" height="20px" />
-            </a>
-
-            <a
-              href="https://twitter.com/swordhealth"
-              target="_blank"
-              rel="noreferrer"
-            >
-              <img src={TwitterLogo} alt="Twitter logo" height="20px" />
-            </a>
-
-            <a
-              href="https://www.instagram.com/sword_health"
-              target="_blank"
-              rel="noreferrer"
-            >
-              <img src={InstagramLogo} alt="Instagram logo" height="20px" />
-            </a>
+            {COMPANY_INFORMATION.socialMedia.map(media => (
+              <a
+                key={media.name}
+                href={media.url}
+                target="_blank"
+                rel="noreferrer"
+              >
+                <img
+                  src={media.logo}
+                  alt={`${media.name} logo`}
+                  height="20px"
+                />
+              </a>
+            ))}
           </SocialMedia>
 
           <form onSubmit={handleSubscribe}>
@@ -95,7 +87,7 @@ const Footer = (): React.ReactElement => {
             />
           </form>
         </Center>
-      </Section>
+      </Column>
     </FlexContainer>
   );
 };

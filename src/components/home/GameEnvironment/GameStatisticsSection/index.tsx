@@ -22,7 +22,6 @@ import {
 } from './styles';
 
 const GameStatisticsSection = React.forwardRef<HTMLElement>((props, ref) => {
-  // const GameStatisticsSection = (): React.ReactElement => {
   const gameHistoryContext = useGameHistory();
   const matchsCounter = gameHistoryContext.info.winnersPerMatch.length;
 
@@ -149,7 +148,6 @@ const GameStatisticsSection = React.forwardRef<HTMLElement>((props, ref) => {
       </div>
     </Container>
   );
-  // };
 });
 
 export default GameStatisticsSection;

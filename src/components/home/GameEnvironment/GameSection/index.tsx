@@ -53,8 +53,8 @@ const GameSection = (props: GameSectionProps): React.ReactElement => {
   useEffect(() => {
     if (isPlaying) {
       setTimer(initialTimer);
-      counterRef.current = 0;
 
+      counterRef.current = 0;
       intervalRef.current = setInterval(() => {
         counterRef.current += 1;
         setTimer(TimeHelper.toHHMMSS(counterRef.current));
