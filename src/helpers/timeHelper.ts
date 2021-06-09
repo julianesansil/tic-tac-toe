@@ -1,7 +1,7 @@
 const toHHMMSS = (totalSeconds: number): string => {
-  const hourCounter = Math.floor(totalSeconds / 60);
-  const minuteCounter = Math.floor(totalSeconds / 60);
-  const secondCounter = totalSeconds % 60;
+  const hourCounter = Math.floor(totalSeconds / 3600);
+  const minuteCounter = Math.floor((totalSeconds % 3600) / 60);
+  const secondCounter = Math.floor((totalSeconds % 3600) % 60);
 
   const hours = hourCounter < 10 ? `0${hourCounter}` : String(hourCounter);
   const minutes =
