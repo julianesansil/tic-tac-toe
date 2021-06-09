@@ -1,7 +1,11 @@
 import React, { useEffect, useRef, useState } from 'react';
 
+import XDarkIcon from 'assets/images/X_dark.svg';
+import ODarkIcon from 'assets/images/O_dark.svg';
+
 import TimeHelper from 'helpers/timeHelper';
 import { useGameHistory } from 'context/GameHistoryContext';
+
 import Typography from 'components/common/Typography';
 import Button from 'components/common/Button';
 import TicTacToe from './TicTacToe';
@@ -134,6 +138,7 @@ const GameSection = (props: GameSectionProps): React.ReactElement => {
           <PlayerLabel>Player 1</PlayerLabel>
           <PlayerScoreValue>
             {gameHistoryContext.info.scoreBoard.P1}
+            <img src={XDarkIcon} alt="X" height="12px" />
           </PlayerScoreValue>
         </Block>
 
@@ -151,6 +156,7 @@ const GameSection = (props: GameSectionProps): React.ReactElement => {
           <PlayerLabel>Player 2</PlayerLabel>
           <PlayerScoreValue>
             {gameHistoryContext.info.scoreBoard.P2}
+            <img src={ODarkIcon} alt="O" height="12px" />
           </PlayerScoreValue>
         </Block>
 
