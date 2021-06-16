@@ -1,0 +1,31 @@
+{
+  "files": {
+    "main.css": "/tic-tac-toe/static/css/main.7c97af84.chunk.css",
+    "main.js": "/tic-tac-toe/static/js/main.a0944802.chunk.js",
+    "main.js.map": "/tic-tac-toe/static/js/main.a0944802.chunk.js.map",
+    "runtime-main.js": "/tic-tac-toe/static/js/runtime-main.d89b838a.js",
+    "runtime-main.js.map": "/tic-tac-toe/static/js/runtime-main.d89b838a.js.map",
+    "static/js/2.505afec5.chunk.js": "/tic-tac-toe/static/js/2.505afec5.chunk.js",
+    "static/js/2.505afec5.chunk.js.map": "/tic-tac-toe/static/js/2.505afec5.chunk.js.map",
+    "index.html": "/tic-tac-toe/index.html",
+    "static/css/main.7c97af84.chunk.css.map": "/tic-tac-toe/static/css/main.7c97af84.chunk.css.map",
+    "static/js/2.505afec5.chunk.js.LICENSE.txt": "/tic-tac-toe/static/js/2.505afec5.chunk.js.LICENSE.txt",
+    "static/media/O_bright.e3966c34.svg": "/tic-tac-toe/static/media/O_bright.e3966c34.svg",
+    "static/media/O_dark.63547981.svg": "/tic-tac-toe/static/media/O_dark.63547981.svg",
+    "static/media/SWORD_Health_logo.4dc379b5.svg": "/tic-tac-toe/static/media/SWORD_Health_logo.4dc379b5.svg",
+    "static/media/X_bright.156f864c.svg": "/tic-tac-toe/static/media/X_bright.156f864c.svg",
+    "static/media/X_dark.6a416e49.svg": "/tic-tac-toe/static/media/X_dark.6a416e49.svg",
+    "static/media/facebook.31ef16dd.svg": "/tic-tac-toe/static/media/facebook.31ef16dd.svg",
+    "static/media/fonts.css": "/tic-tac-toe/static/media/glacialindifference-regular-webfont.f0734372.ttf",
+    "static/media/instagram.172f3110.svg": "/tic-tac-toe/static/media/instagram.172f3110.svg",
+    "static/media/profile_photo.0667139e.jpg": "/tic-tac-toe/static/media/profile_photo.0667139e.jpg",
+    "static/media/send.7411461b.svg": "/tic-tac-toe/static/media/send.7411461b.svg",
+    "static/media/twitter.b80161ac.svg": "/tic-tac-toe/static/media/twitter.b80161ac.svg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.d89b838a.js",
+    "static/js/2.505afec5.chunk.js",
+    "static/css/main.7c97af84.chunk.css",
+    "static/js/main.a0944802.chunk.js"
+  ]
+}
